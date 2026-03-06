@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import AnimatedText from "@/components/AnimatedText";
-import useMagneticButton from "@/components/hooks/useMagneticButton";
+import emailjs from "@emailjs/browser";
 
 // ─── Social icon paths ────────────────────────────────────────────────────────
 const LinkedInIcon = () => (
@@ -50,13 +50,42 @@ const fadeUp3D = {
 };
 
 const ContactSection = () => {
-    const emailBtn = useMagneticButton({ strength: 0.4 });
+    const formRef = useRef();
+    const [status, setStatus] = useState({ loading: false, success: false, error: false });
     const [copied, setCopied] = useState(false);
 
     const copyEmail = () => {
         navigator.clipboard.writeText("dhvanitkanabar.cg@gmail.com");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
+    };
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        // Use environment variables for security and easier configuration
+        const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+        const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+        const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+        if (SERVICE_ID === "YOUR_SERVICE_ID" || !SERVICE_ID) {
+            console.error("❌ EmailJS Error: Configuration Missing!");
+            setStatus({ loading: false, success: false, error: true });
+            return;
+        }
+
+        setStatus({ loading: true, success: false, error: false });
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+            .then(() => {
+                setStatus({ loading: false, success: true, error: false });
+                formRef.current.reset();
+                setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
+            }, (error) => {
+                console.error("EmailJS Error:", error.text);
+                setStatus({ loading: false, success: false, error: true });
+                setTimeout(() => setStatus(prev => ({ ...prev, error: false })), 5000);
+            });
     };
 
     return (
@@ -195,9 +224,9 @@ const ContactSection = () => {
                         </motion.div>
                     </motion.div>
 
-                    {/* Right — CTA card */}
+                    {/* Right — Contact Form Card */}
                     <motion.div
-                        className="flex flex-col items-center justify-center gap-8 p-12 rounded-3xl
+                        className="flex flex-col p-10 rounded-3xl
               border border-dark/10 dark:border-light/10 relative overflow-hidden
               bg-light/40 dark:bg-dark/40 backdrop-blur-lg"
                         initial={{ opacity: 0, rotateX: -15, y: 60, scale: 0.94 }}
@@ -205,9 +234,6 @@ const ContactSection = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                         style={{ perspective: "1000px", transformOrigin: "top center" }}
-                        whileHover={{
-                            boxShadow: "0 30px 60px -20px rgba(182,62,150,0.2), 0 0 0 1px rgba(182,62,150,0.1)",
-                        }}
                     >
                         {/* Animated border gradient */}
                         <motion.div
@@ -220,49 +246,73 @@ const ContactSection = () => {
                             transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                         />
 
-                        <motion.div
-                            className="text-6xl"
-                            animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            👋
-                        </motion.div>
+                        <h3 className="text-2xl font-bold dark:text-light mb-8 text-center">Send a Message</h3>
 
-                        <div className="text-center">
-                            <h3 className="text-3xl font-bold dark:text-light mb-3">Ready to Start?</h3>
-                            <p className="text-dark/70 dark:text-light/70 leading-relaxed max-w-xs mx-auto">
-                                Send me an email and I&apos;ll get back to you within 24 hours.
-                            </p>
-                        </div>
+                        <form ref={formRef} onSubmit={sendEmail} className="flex flex-col gap-5 w-full">
+                            <div className="flex flex-col gap-1">
+                                <label className="text-xs font-bold uppercase tracking-widest text-dark/60 dark:text-light/60 ml-2">Your Name</label>
+                                <input
+                                    type="text"
+                                    name="user_name"
+                                    required
+                                    placeholder="John Doe"
+                                    className="w-full p-4 rounded-xl bg-light/50 dark:bg-dark/50 border border-dark/10 dark:border-light/10
+                    focus:border-primary dark:focus:border-primaryDark outline-none transition-all duration-300"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label className="text-xs font-bold uppercase tracking-widest text-dark/60 dark:text-light/60 ml-2">Email Address</label>
+                                <input
+                                    type="email"
+                                    name="user_email"
+                                    required
+                                    placeholder="john@example.com"
+                                    className="w-full p-4 rounded-xl bg-light/50 dark:bg-dark/50 border border-dark/10 dark:border-light/10
+                    focus:border-primary dark:focus:border-primaryDark outline-none transition-all duration-300"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label className="text-xs font-bold uppercase tracking-widest text-dark/60 dark:text-light/60 ml-2">Message</label>
+                                <textarea
+                                    name="message"
+                                    required
+                                    rows="4"
+                                    placeholder="Tell me about your project..."
+                                    className="w-full p-4 rounded-xl bg-light/50 dark:bg-dark/50 border border-dark/10 dark:border-light/10
+                    focus:border-primary dark:focus:border-primaryDark outline-none transition-all duration-300 resize-none"
+                                />
+                            </div>
 
-                        {/* Primary email button */}
-                        <motion.div
-                            ref={emailBtn.ref}
-                            onMouseMove={emailBtn.onMouseMove}
-                            onMouseLeave={emailBtn.onMouseLeave}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.97 }}
-                        >
-                            <Link
-                                href="mailto:dhvanitkanabar.cg@gmail.com"
-                                className="flex items-center gap-3 bg-dark text-light dark:bg-light dark:text-dark
-                  py-4 px-10 rounded-2xl text-lg font-bold ripple-btn
-                  hover:bg-primary dark:hover:bg-primaryDark hover:text-light dark:hover:text-light
-                  shadow-xl transition-all duration-300"
+                            <button
+                                type="submit"
+                                disabled={status.loading}
+                                className={`mt-4 w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2
+                  ${status.loading ? "bg-dark/50 dark:bg-light/50 cursor-not-allowed" : "bg-dark text-light dark:bg-light dark:text-dark hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-primary/20"}`}
                             >
-                                <span>✉️</span> Send an Email
-                            </Link>
-                        </motion.div>
+                                {status.loading ? (
+                                    <>
+                                        <div className="w-5 h-5 border-2 border-light/30 border-t-light rounded-full animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : status.success ? (
+                                    "✨ Message Sent!"
+                                ) : status.error ? (
+                                    status.loading ? "❌ Error" : "❌ Configure API Keys"
+                                ) : (
+                                    "Send Message →"
+                                )}
+                            </button>
 
-                        {/* Copy email button */}
-                        <motion.button
-                            onClick={copyEmail}
-                            className="text-sm font-medium text-dark/60 dark:text-light/60 hover:text-primary dark:hover:text-primaryDark transition-colors flex items-center gap-2"
-                            whileHover={{ y: -2 }}
-                            whileTap={{ scale: 0.96 }}
-                        >
-                            {copied ? "✅ Copied!" : "📋 Copy email address"}
-                        </motion.button>
+                            <div className="text-center mt-2">
+                                <button
+                                    type="button"
+                                    onClick={copyEmail}
+                                    className="text-xs font-medium text-dark/40 dark:text-light/40 hover:text-primary dark:hover:text-primaryDark transition-colors"
+                                >
+                                    {copied ? "✅ Email Copied!" : "or copy: dhvanitkanabar.cg@gmail.com"}
+                                </button>
+                            </div>
+                        </form>
                     </motion.div>
                 </div>
 

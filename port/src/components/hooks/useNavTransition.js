@@ -8,6 +8,23 @@ import { useCallback } from "react";
 // Duration of the tilt-out phase (ms) before we start scrolling
 const TILT_OUT_MS = 400;
 
+// Offset in px to account for the fixed navbar height + a little breathing room
+const NAVBAR_OFFSET = 80;
+
+/**
+ * Returns the true top position of an element relative to the document,
+ * compensating for any CSS transform applied to an ancestor (e.g. the tilt).
+ */
+function getElementTop(el) {
+    let top = 0;
+    let node = el;
+    while (node) {
+        top += node.offsetTop || 0;
+        node = node.offsetParent;
+    }
+    return top;
+}
+
 export function useNavTransition() {
     const handleNavClick = useCallback((e) => {
         const href = e.currentTarget?.getAttribute("href") || "";
@@ -22,7 +39,9 @@ export function useNavTransition() {
         // ─── Phase 1: Tilt-out the whole main content ─────────────────────
         const main = document.querySelector("[data-content]");
         if (!main) {
-            target.scrollIntoView({ behavior: "smooth" });
+            // Fallback: plain scroll with offset
+            const top = getElementTop(target) - NAVBAR_OFFSET;
+            window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
             return;
         }
 
@@ -33,8 +52,17 @@ export function useNavTransition() {
 
         // ─── Phase 2: Scroll & tilt back in ───────────────────────────────
         setTimeout(() => {
-            // Jump scroll (no animation during invisible state)
-            target.scrollIntoView({ behavior: "instant" });
+            // First, temporarily remove the transform so getBoundingClientRect is accurate
+            main.style.transition = "none";
+            main.style.transform = "none";
+            main.style.opacity = "1";
+
+            // Calculate scroll position with navbar offset
+            const targetTop = getElementTop(target) - NAVBAR_OFFSET;
+            window.scrollTo({ top: Math.max(0, targetTop), behavior: "instant" });
+
+            // Update URL hash without jumping
+            window.history.pushState(null, null, `#${targetId}`);
 
             // Small paint delay so the new position is rendered first
             requestAnimationFrame(() => {

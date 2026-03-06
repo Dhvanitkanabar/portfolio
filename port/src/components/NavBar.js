@@ -12,14 +12,15 @@ import Logo from "./Logo";
 import { motion } from "framer-motion";
 import useThemeSwitcher from "./hooks/useThemeSwitcher";
 import { useNavTransition } from "./hooks/useNavTransition";
+import { useScrollSpy } from "./hooks/useScrollSpy";
 
-const CustomLink = ({ href, title, className = "" }) => {
+const CustomLink = ({ href, title, className = "", isActive }) => {
     const { handleNavClick } = useNavTransition();
     return (
-        <a href={href} onClick={handleNavClick} className={`${className} relative group`}>
+        <a href={href} onClick={handleNavClick} className={`${className} relative group ${isActive ? "text-primary dark:text-primaryDark" : ""}`}>
             {title}
             <span
-                className="h-[1px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0 dark:bg-light"
+                className={`h-[1px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 dark:bg-light ${isActive ? "w-full bg-primary dark:bg-primaryDark" : "w-0"}`}
             >
                 &nbsp;
             </span>
@@ -27,7 +28,7 @@ const CustomLink = ({ href, title, className = "" }) => {
     );
 };
 
-const CustomMobileLink = ({ href, title, className = "", toggle }) => {
+const CustomMobileLink = ({ href, title, className = "", toggle, isActive }) => {
     const { handleNavClick } = useNavTransition();
     const handleClick = (e) => {
         toggle();
@@ -37,12 +38,12 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
     return (
         <a
             href={href}
-            className={`${className} relative group text-light dark:text-dark my-2`}
+            className={`${className} relative group my-2 ${isActive ? "text-primary dark:text-primaryDark" : "text-light dark:text-dark"}`}
             onClick={handleClick}
         >
             {title}
             <span
-                className="h-[1px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 w-0 dark:bg-dark"
+                className={`h-[1px] inline-block bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 dark:bg-dark ${isActive ? "w-full bg-primary dark:bg-primaryDark" : "w-0"}`}
             >
                 &nbsp;
             </span>
@@ -54,6 +55,9 @@ const NavBar = () => {
     const [mode, setMode] = useThemeSwitcher();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    const sectionIds = ["home", "about", "skills", "projects", "certificates", "contact"];
+    const activeId = useScrollSpy(sectionIds);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -98,12 +102,12 @@ const NavBar = () => {
 
             <div className="w-full flex justify-between items-center lg:hidden">
                 <nav className="flex items-center">
-                    <CustomLink href="#home" title="Home" className="mr-6 text-sm lg:text-base" />
-                    <CustomLink href="#about" title="About" className="mx-6 text-sm lg:text-base" />
-                    <CustomLink href="#skills" title="Skills" className="mx-6 text-sm lg:text-base" />
-                    <CustomLink href="#projects" title="Projects" className="mx-6 text-sm lg:text-base" />
-                    <CustomLink href="#certificates" title="Certificates" className="mx-6 text-sm lg:text-base" />
-                    <CustomLink href="#contact" title="Contact" className="ml-6 text-sm lg:text-base" />
+                    <CustomLink href="#home" title="Home" className="mr-6 text-sm lg:text-base" isActive={activeId === "home"} />
+                    <CustomLink href="#about" title="About" className="mx-6 text-sm lg:text-base" isActive={activeId === "about"} />
+                    <CustomLink href="#skills" title="Skills" className="mx-6 text-sm lg:text-base" isActive={activeId === "skills"} />
+                    <CustomLink href="#projects" title="Projects" className="mx-6 text-sm lg:text-base" isActive={activeId === "projects"} />
+                    <CustomLink href="#certificates" title="Certificates" className="mx-6 text-sm lg:text-base" isActive={activeId === "certificates"} />
+                    <CustomLink href="#contact" title="Contact" className="ml-6 text-sm lg:text-base" isActive={activeId === "contact"} />
                 </nav>
 
                 <nav className="flex items-center justify-center flex-wrap">
@@ -157,12 +161,12 @@ const NavBar = () => {
       bg-dark/90 dark:bg-light/75 rounded-2xl backdrop-blur-md py-24"
                 >
                     <nav className="flex items-center flex-col justify-center">
-                        <CustomMobileLink href="#home" title="Home" className="text-lg" toggle={handleClick} />
-                        <CustomMobileLink href="#about" title="About" className="text-lg" toggle={handleClick} />
-                        <CustomMobileLink href="#skills" title="Skills" className="text-lg" toggle={handleClick} />
-                        <CustomMobileLink href="#projects" title="Projects" className="text-lg" toggle={handleClick} />
-                        <CustomMobileLink href="#certificates" title="Certificates" className="text-lg" toggle={handleClick} />
-                        <CustomMobileLink href="#contact" title="Contact" className="text-lg" toggle={handleClick} />
+                        <CustomMobileLink href="#home" title="Home" className="text-lg" toggle={handleClick} isActive={activeId === "home"} />
+                        <CustomMobileLink href="#about" title="About" className="text-lg" toggle={handleClick} isActive={activeId === "about"} />
+                        <CustomMobileLink href="#skills" title="Skills" className="text-lg" toggle={handleClick} isActive={activeId === "skills"} />
+                        <CustomMobileLink href="#projects" title="Projects" className="text-lg" toggle={handleClick} isActive={activeId === "projects"} />
+                        <CustomMobileLink href="#certificates" title="Certificates" className="text-lg" toggle={handleClick} isActive={activeId === "certificates"} />
+                        <CustomMobileLink href="#contact" title="Contact" className="text-lg" toggle={handleClick} isActive={activeId === "contact"} />
                     </nav>
 
                     <nav className="flex items-center justify-center flex-wrap mt-4">
