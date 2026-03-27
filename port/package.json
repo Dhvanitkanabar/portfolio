@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^1.12.72",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.6.0",

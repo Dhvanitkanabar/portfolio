@@ -67,7 +67,7 @@ const AboutSection = () => {
             <Layout className="pt-16">
                 <AnimatedText
                     text="Passion Fuels Purpose!"
-                    className="mb-12 lg:!text-6xl sm:!text-5xl xs:!text-3xl sm:mb-6"
+                    className="mb-12 xl:!text-7xl lg:!text-6xl md:!text-5xl sm:!text-4xl xs:!text-3xl sm:mb-6"
                 />
                 <motion.div
                     className="grid w-full grid-cols-8 gap-16 sm:gap-8"
@@ -155,9 +155,6 @@ const AboutSection = () => {
                         </motion.div>
                     </motion.div>
                 </motion.div>
-
-                <Skills />
-                <Education />
             </Layout>
         </motion.section>
     );

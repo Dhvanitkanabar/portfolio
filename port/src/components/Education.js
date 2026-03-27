@@ -7,7 +7,7 @@ const Details = ({ type, time, place, info, index = 0 }) => {
     return (
         <li
             ref={ref}
-            className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between md:w-[80%]"
+            className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between xl:w-[70%] lg:w-[80%] md:w-[90%] sm:w-full"
         >
             <LiIcon reference={ref} />
             <motion.div
@@ -43,6 +43,7 @@ const Education = () => {
 
     return (
         <motion.div
+            id="education"
             className="my-64"
             initial={{ opacity: 0, rotateX: -12, y: 80 }}
             whileInView={{ opacity: 1, rotateX: 0, y: 0 }}

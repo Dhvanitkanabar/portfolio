@@ -2,40 +2,24 @@ import React from "react";
 import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
-import useTilt from "@/components/hooks/useTilt";
 
 const CertificateCard = ({ title, description, date, file, category, variant = "default" }) => {
     const isWinner = variant === "winner";
-    const { ref, onMouseMove, onMouseLeave } = useTilt({ max: isWinner ? 8 : 12, perspective: 900, scale: 1.02 });
 
     return (
         <motion.div
-            ref={ref}
-            onMouseMove={onMouseMove}
-            onMouseLeave={onMouseLeave}
-            initial={{ opacity: 0, rotateX: -18, y: 60, scale: 0.92 }}
-            whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-            style={{ perspective: "900px", transformStyle: "preserve-3d" }}
-            className={`w-full p-6 rounded-2xl border-2 border-solid tilt-card ${isWinner ? "border-primary dark:border-primaryDark shadow-primary/20" : "border-dark dark:border-light"} bg-light dark:bg-dark 
-      flex flex-col items-start justify-center relative shadow-lg hover:shadow-2xl transition-all duration-500 group overflow-hidden ${isWinner ? "scale-105 z-10" : ""}`}
+            className={`w-full p-6 rounded-2xl border-2 border-solid ${isWinner ? "border-primary dark:border-primaryDark shadow-primary/20" : "border-dark dark:border-light"} bg-light dark:bg-dark 
+      flex flex-col items-start justify-center relative shadow-lg transition-all duration-500 group overflow-hidden ${isWinner ? "scale-105 z-10" : ""}`}
         >
             {isWinner && (
                 <div className="absolute top-4 right-4 bg-primary dark:bg-primaryDark text-light dark:text-dark text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter">
                     🏆 Winner
                 </div>
             )}
-            {/* Gradient hover overlay */}
-            <motion.div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500 z-0 rounded-2xl"
-                style={{
-                    background: isWinner
-                        ? "radial-gradient(circle at 30% 30%, rgba(182,62,150,0.08) 0%, transparent 60%)"
-                        : "radial-gradient(circle at 30% 30%, rgba(88,230,217,0.05) 0%, transparent 60%)",
-                }}
-            />
-            <div className="absolute top-0 -right-3 -z-10 w-[101%] h-[103%] rounded-[2rem] bg-dark dark:bg-light opacity-5" />
 
             <div className="w-full flex flex-col items-start justify-center relative z-10">
                 <span className={`font-bold text-xs uppercase tracking-[0.2em] mb-1 ${isWinner ? "text-primary dark:text-primaryDark" : "text-dark/60 dark:text-light/60"}`}>
@@ -83,8 +67,8 @@ const CertificatesSection = () => {
     return (
         <motion.section
             id="certificates"
-            initial={{ opacity: 0, rotateX: -12, y: 100, scale: 0.95 }}
-            whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, margin: "-80px" }}
             style={{ perspective: "1400px", transformOrigin: "top center" }}
@@ -98,7 +82,7 @@ const CertificatesSection = () => {
                 <div className="text-center mb-24">
                     <AnimatedText
                         text="Achievements & Honors"
-                        className="!text-6xl xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl"
+                        className="!text-7xl xl:!text-6xl lg:!text-5xl md:!text-4xl sm:!text-3xl"
                     />
                     <p className="text-lg font-medium text-dark/75 dark:text-light/75 mt-4 max-w-2xl mx-auto">
                         A showcase of technical excellence, competitive victories, and continuous learning milestones.

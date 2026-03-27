@@ -3,96 +3,85 @@ import Link from "next/link";
 import Image from "next/image";
 import { GithubIcon } from "./Icons";
 import { motion } from "framer-motion";
-import useTilt from "@/components/hooks/useTilt";
+
 
 const FramerImage = motion(Image);
 
-const FeaturedProject = ({ type, title, summary, img, link, github }) => {
-    const { ref, onMouseMove, onMouseLeave } = useTilt({ max: 8, perspective: 1200, scale: 1.02 });
-
+const FeaturedProject = ({ type, title, summary, img, link, github, doc }) => {
     return (
-        <motion.article
-            ref={ref}
-            onMouseMove={onMouseMove}
-            onMouseLeave={onMouseLeave}
-            className="w-full flex items-center justify-between relative rounded-3xl tilt-card
-        border-2 border-solid border-dark/10 bg-light/80 backdrop-blur-sm shadow-xl p-12 dark:bg-dark/80
-        dark:border-light/10 lg:flex-col lg:p-8 xs:rounded-2xl xs:p-4
-        hover:border-primary/50 dark:hover:border-primaryDark/50 transition-all duration-500 group"
-            style={{
-                background: "linear-gradient(135deg, rgba(182,62,150,0.03) 0%, transparent 50%, rgba(88,230,217,0.03) 100%)",
-            }}
-            whileHover={{
-                boxShadow: "0 30px 60px -15px rgba(182,62,150,0.2), 0 0 0 1px rgba(182,62,150,0.15)",
-            }}
-            transition={{ boxShadow: { duration: 0.3 } }}
-        >
-            {/* Gradient overlay on hover */}
-            <motion.div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 pointer-events-none -z-0 transition-opacity duration-500"
-                style={{
-                    background: "linear-gradient(135deg, rgba(182,62,150,0.05) 0%, transparent 50%, rgba(88,230,217,0.05) 100%)",
-                }}
-            />
+        <article className="w-full relative rounded-[2.5rem] border border-dark/10 bg-light/60 backdrop-blur-md dark:bg-dark/60 dark:border-light/10 p-12 lg:p-8 sm:p-6 overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] group text-left">
+            {/* Animated backgrounds */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full -mr-40 -mt-40 blur-[100px] group-hover:bg-primary/10 transition-colors duration-700" />
 
-            <Link
-                href={link}
-                target="_blank"
-                className="w-1/2 cursor-pointer overflow-hidden rounded-2xl lg:w-full bg-dark/5 dark:bg-light/5 relative z-10"
-            >
-                <FramerImage
-                    src={img}
-                    alt={title}
-                    className="w-full h-auto"
-                    whileHover={{ scale: 1.06 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    priority
-                    width={800}
-                    height={500}
-                />
-            </Link>
-
-            <div className="w-1/2 flex flex-col items-start justify-between pl-10 lg:w-full lg:pl-0 lg:pt-8 relative z-10">
-                <motion.span
-                    className="text-primary dark:text-primaryDark font-bold text-sm uppercase tracking-[0.3em]"
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 }}
-                >
-                    {type}
-                </motion.span>
+            <div className="flex items-center justify-between gap-12 lg:flex-col lg:gap-8 relative z-10">
+                {/* Image Section */}
                 <Link
                     href={link}
                     target="_blank"
-                    className="group-hover:text-primary dark:group-hover:text-primaryDark transition-colors duration-300"
+                    className="w-[55%] lg:w-full cursor-pointer overflow-hidden rounded-3xl border border-dark/5 dark:border-light/5 shadow-2xl group-hover:border-primary/30 transition-all duration-500 bg-dark/5 dark:bg-light/5"
                 >
-                    <h2 className="my-3 w-full text-left text-4xl font-bold dark:text-light sm:text-2xl">
-                        {title}
-                    </h2>
+                    <FramerImage
+                        src={img}
+                        alt={title}
+                        className="w-full h-auto object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.8, ease: "circOut" }}
+                        priority
+                        width={1000}
+                        height={600}
+                    />
                 </Link>
-                <p className="my-3 font-medium text-dark/70 dark:text-light/70 leading-relaxed text-lg sm:text-base">
-                    {summary}
-                </p>
-                <div className="mt-4 flex items-center w-full gap-6">
-                    <motion.div whileHover={{ y: -3 }} whileTap={{ scale: 0.95 }}>
+
+                {/* Content Section */}
+                <div className="w-[45%] lg:w-full flex flex-col items-start justify-center">
+                    <span className="text-primary dark:text-primaryDark font-black text-xs uppercase tracking-[0.4em] mb-4">
+                        {type}
+                    </span>
+
+                    <Link
+                        href={link}
+                        target="_blank"
+                        className="hover:text-primary dark:hover:text-primaryDark transition-colors duration-300"
+                    >
+                        <h2 className="text-5xl xl:text-4xl lg:text-3xl font-black text-dark dark:text-light mb-6 leading-tight">
+                            {title}
+                        </h2>
+                    </Link>
+
+                    <p className="text-xl xl:text-lg lg:text-base font-medium text-dark/70 dark:text-light/70 mb-8 leading-relaxed">
+                        {summary}
+                    </p>
+
+                    <div className="flex items-center gap-4 sm:gap-2 w-full flex-wrap">
+                        {link && link !== "#" && (
+                            <Link
+                                href={link}
+                                target="_blank"
+                                className="rounded-2xl bg-dark text-light py-4 px-10 sm:px-6 text-lg sm:text-base font-black dark:bg-light dark:text-dark hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-dark/10 dark:shadow-light/5"
+                            >
+                                Live Demo
+                            </Link>
+                        )}
+                        {doc && (
+                            <Link
+                                href={doc}
+                                target="_blank"
+                                className="rounded-2xl bg-primary/10 text-primary py-4 px-8 sm:px-6 text-lg sm:text-base font-black border border-primary/20 dark:bg-primaryDark/10 dark:text-primaryDark dark:border-primaryDark/20 hover:bg-primary hover:text-light dark:hover:bg-primaryDark dark:hover:text-dark transition-all duration-300"
+                            >
+                                Documentation
+                            </Link>
+                        )}
                         <Link
-                            href={link}
+                            href={github}
                             target="_blank"
-                            className="rounded-xl bg-dark text-light p-3 px-10 text-lg font-bold ripple-btn
-                dark:bg-light dark:text-dark hover:bg-primary dark:hover:bg-primaryDark hover:text-light dark:hover:text-dark
-                shadow-lg transition-all duration-300 sm:px-6 sm:text-base inline-block"
+                            className="w-12 h-12 flex items-center justify-center rounded-2xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 hover:text-primary dark:hover:text-primaryDark transition-all duration-300 hover:scale-110"
                         >
-                            View Case Study
+                            <GithubIcon className="w-6 h-6" />
                         </Link>
-                    </motion.div>
-                    <motion.div whileHover={{ scale: 1.15, rotate: 5 }} whileTap={{ scale: 0.9 }}>
-                        <Link href={github} target="_blank" className="w-10 block">
-                            <GithubIcon />
-                        </Link>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
-        </motion.article>
+        </article>
     );
 };
 

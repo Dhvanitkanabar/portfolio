@@ -70,7 +70,7 @@ const ProjectsSection = () => {
             <Layout className="pt-16">
                 <AnimatedText
                     text="Crafting Digital Innovation"
-                    className="mb-16 lg:!text-6xl sm:mb-8 sm:!text-5xl xs:!text-3xl"
+                    className="mb-16 xl:!text-7xl lg:!text-6xl md:!text-5xl sm:!text-4xl xs:!text-3xl sm:mb-8"
                 />
 
                 <motion.div
@@ -80,15 +80,15 @@ const ProjectsSection = () => {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-80px" }}
                 >
-                    {/* Featured: Secure Comm */}
                     <motion.div className="col-span-12" variants={featuredItem}>
                         <FeaturedProject
-                            title="Secure Comm: Safety Engine"
-                            img={secureCommImg}
-                            summary="A high-performance safety engine designed for secure communications, featuring real-time encryption, anomaly detection, and a robust cybersecurity infrastructure."
-                            link="https://secure-comm-jade.vercel.app/"
-                            github="https://github.com/Dhvanitkanabar"
-                            type="Security Technology"
+                            title="CERS: Emergency Assistance"
+                            img={emergencyImg}
+                            summary="Advanced emergency response platform for coordinating mission-critical services. Features real-time tracking, resource optimization, and rapid dispatch capabilities."
+                            link="https://cers-4.onrender.com/"
+                            github="https://github.com/Dhvanitkanabar/CERS"
+                            doc="https://docs.google.com/document/d/1ZMIPI1vuPb1laCNX_uYqanPsItKipX76VkuRj-9-q1g/edit?usp=sharing"
+                            type="Safety Tech"
                         />
                     </motion.div>
 
@@ -97,8 +97,10 @@ const ProjectsSection = () => {
                         <Project
                             title="Aura: Messaging App"
                             img={auraImg}
+                            summary="Full-featured real-time messaging application with private and group chat capabilities."
                             link="https://aura-eight-phi.vercel.app/"
-                            github="https://github.com/Dhvanitkanabar"
+                            github="https://github.com/Dhvanitkanabar/aura"
+                            doc="https://docs.google.com/document/d/1xm8IixdQh3K6T--7PZ8XxWUHxqnXDjlByQzAC5cndDE/edit?usp=sharing"
                             type="Communication Platform"
                         />
                     </motion.div>
@@ -106,46 +108,43 @@ const ProjectsSection = () => {
                         <Project
                             title="HackersPanel: Security Deck"
                             img={hackersPanelImg}
+                            summary="A comprehensive security dashboard for monitoring vulnerabilities and system health."
                             link="https://hackerspanel.netlify.app"
-                            github="https://github.com/Dhvanitkanabar"
+                            github="https://github.com/Dhvanitkanabar/cybersecurity"
+                            doc="https://docs.google.com/document/d/1oft4l63s8F0pPbYAMn-CjJBqldIN1y5pZeZEOmN6HWs/edit?usp=sharing"
                             type="Cybersecurity"
                         />
                     </motion.div>
 
-                    {/* Featured: MindEase AI */}
+                    {/* Featured: Secure Comm */}
                     <motion.div
                         className="col-span-12"
                         variants={{ ...featuredItem, hidden: { ...featuredItem.hidden, x: 60 } }}
                     >
                         <FeaturedProject
-                            title="MindEase AI"
-                            img={mindEaseImg}
-                            summary="Mental wellness–focused application helping users manage stress and emotions through a simple and intuitive interface."
-                            link="https://github.com/dhvanitkanabar"
-                            github="https://github.com/Dhvanitkanabar"
-                            type="AI & Wellness"
+                            title="Secure Comm: Safety Engine"
+                            img={secureCommImg}
+                            summary="🏆 Runner-Up at ElectroSphere 2K26 Hackathon. High-performance safety engine for secure communications featuring real-time encryption, anomaly detection, and a robust cybersecurity infrastructure."
+                            link="https://secure-comm-jade.vercel.app/"
+                            github="https://github.com/Dhvanitkanabar/secure-comm"
+                            doc="https://docs.google.com/document/d/14w5J8z8yWtA1nhtLJcgO1WeD4-1gjuoi9U80Xi3weC8/edit?tab=t.0#heading=h.aogq9mc2ptoo"
+                            type="Security Tech"
                         />
                     </motion.div>
 
-                    {/* Canteen & Emergency */}
+                    {/* Canteen & MindEase */}
                     <motion.div className="col-span-6 sm:col-span-12" variants={gridItem}>
                         <Project
                             title="Canteen Food Order"
                             img={canteenImg}
-                            link="https://github.com/dhvanitkanabar"
-                            github="https://github.com/Dhvanitkanabar"
+                            summary="Streamlined food ordering system for university canteens with real-time menu management."
+                            link=""
+                            github="https://github.com/Dhvanitkanabar/canteen-prj"
+                            doc="https://docs.google.com/document/d/1ChdA0fY8mtZZ_b0CPxkziRfA2OSUM0XFBMC-Zglod7c/edit?usp=sharing"
                             type="E-commerce"
                         />
                     </motion.div>
-                    <motion.div className="col-span-6 sm:col-span-12" variants={gridItem}>
-                        <Project
-                            title="Emergency Assistance (CERS+)"
-                            img={emergencyImg}
-                            link="https://cers-plus.web.app"
-                            github="https://github.com/Dhvanitkanabar"
-                            type="Safety Tech"
-                        />
-                    </motion.div>
+
 
                     {/* Featured: Farmer Marketplace */}
                     <motion.div className="col-span-12" variants={featuredItem}>
@@ -154,7 +153,8 @@ const ProjectsSection = () => {
                             img={farmerImg}
                             summary="A marketplace platform enabling farmers to sell products directly to consumers without intermediaries, reducing waste and increasing profits."
                             link="https://meek-daffodil-fcaf7d.netlify.app/"
-                            github="https://github.com/Dhvanitkanabar"
+                            github="https://github.com/Dhvanitkanabar/Repo-Reboot"
+                            doc="https://docs.google.com/document/d/1v5nz990GmQ8VOdxc87K505CUlFhBHgfRigldoFc8zto/edit?usp=sharing"
                             type="AgriTech"
                         />
                     </motion.div>

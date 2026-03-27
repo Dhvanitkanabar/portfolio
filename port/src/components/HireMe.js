@@ -1,32 +1,37 @@
 import React from "react";
 import Link from "next/link";
 import { CircularText } from "./Icons";
+import { motion } from "framer-motion";
 
 const HireMe = () => {
     return (
         <div
-            className="fixed left-4 bottom-4
-    flex items-center justify-center overflow-hidden md:right-8 md:left-auto md:top-0 md:bottom-auto md:absolute
-    sm:right-0"
+            className="fixed left-4 bottom-4 flex items-center justify-center overflow-hidden z-40
+            lg:left-auto lg:right-2 lg:bottom-2"
         >
-            <div className="w-48 h-auto flex items-center justify-center relative md:w-24">
+            <motion.div 
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="w-32 h-auto flex items-center justify-center relative xl:w-28 lg:w-24 md:w-22 sm:w-20"
+            >
                 <CircularText
-                    className={"fill-dark animate-spin-slow dark:fill-light"}
+                    className={"fill-dark animate-spin-slow dark:fill-light opacity-80"}
                 />
 
                 <Link
                     href="#contact"
                     className="flex items-center justify-center
-        absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark
-        text-light shadow-xl border border-solid border-dark/10 w-20 h-20 rounded-full
-        font-medium hover:bg-light hover:text-dark transition-all duration-300
-        
-        dark:bg-zinc-900 dark:text-light hover:dark:bg-light hover:dark:text-dark
-        hover:dark:border-light md:w-12 md:h-12 md:text-[10px]"
+                    absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark
+                    text-light shadow-xl border-2 border-solid border-transparent w-14 h-14 rounded-full
+                    font-bold hover:bg-light hover:text-dark transition-all duration-300 text-[10px]
+                    
+                    dark:bg-zinc-900 dark:text-light hover:dark:bg-light hover:dark:text-dark
+                    hover:dark:border-dark xl:w-12 xl:h-12 xl:text-[8px] lg:w-10 lg:h-10 md:w-9 md:h-9"
                 >
                     Hire Me
                 </Link>
-            </div>
+            </motion.div>
         </div>
     );
 };
