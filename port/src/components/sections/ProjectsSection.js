@@ -46,7 +46,6 @@ const featuredItem = {
 const ProjectsSection = () => {
     return (
         <motion.section
-            id="projects"
             initial={{ opacity: 0, rotateX: -12, y: 100, scale: 0.95 }}
             whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}

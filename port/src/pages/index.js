@@ -27,8 +27,10 @@ export default function Home() {
           <HomeSection />
           <AboutSection />
           <Skills />
-          <HackathonsSection />
-          <ProjectsSection />
+          <section id="projects" className="w-full">
+            <HackathonsSection />
+            <ProjectsSection />
+          </section>
           <CertificatesSection />
           <Education />
           <ContactSection />
