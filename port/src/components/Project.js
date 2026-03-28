@@ -9,7 +9,7 @@ const FramerImage = motion(Image);
 
 const Project = ({ title, type, img, link, github, summary, doc }) => {
     return (
-        <article className="w-full h-full flex flex-col items-start justify-center rounded-[2rem] border border-dark/10 bg-light/40 backdrop-blur-sm p-8 relative dark:bg-dark/40 dark:border-light/10 overflow-hidden transition-all duration-500 hover:shadow-2xl group text-left">
+        <article className="w-full h-full flex flex-col items-start justify-center rounded-[2rem] border border-dark/10 bg-light/40 backdrop-blur-sm p-8 sm:p-6 xs:p-4 relative dark:bg-dark/40 dark:border-light/10 overflow-hidden transition-all duration-500 hover:shadow-2xl group text-left">
             <Link
                 href={link}
                 target="_blank"
@@ -47,7 +47,7 @@ const Project = ({ title, type, img, link, github, summary, doc }) => {
                     </p>
                 )}
 
-                <div className="w-full flex items-center justify-between mt-auto pt-4 border-t border-dark/5 dark:border-light/5">
+                <div className="w-full flex items-center justify-between flex-wrap gap-3 mt-auto pt-4 border-t border-dark/5 dark:border-light/5">
                     <div className="flex items-center gap-4">
                         {link && link !== "#" && (
                             <Link

@@ -14,14 +14,14 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="col-span-12 grid grid-cols-12 gap-12 p-10 lg:p-6 rounded-[2.5rem] bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden mb-12"
+            className="col-span-12 grid grid-cols-12 gap-12 p-10 lg:p-6 sm:p-5 xs:p-4 rounded-[2.5rem] bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden mb-8"
         >
             {/* Background Glow */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-primary/10 transition-colors" />
 
             {/* Main Info Side - Now Span 12 */}
             <div className="col-span-12 flex flex-col justify-center">
-                <div className="flex items-start gap-12 md:flex-col md:gap-8 mb-8">
+                <div className="flex items-start gap-8 sm:flex-col sm:gap-4 mb-8">
                     {/* Lead Winner Photo Thumbnail */}
                     {leadPhoto && (
                         <div className="flex-shrink-0">
@@ -29,7 +29,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                                 <img 
                                     src={leadPhoto} 
                                     alt="Lead Winning Moment" 
-                                    className="w-56 h-56 md:w-full md:h-64 object-cover rounded-[calc(1.5rem-6px)] border-4 border-white/10"
+                                    className="w-44 h-44 sm:w-full sm:h-48 xs:h-36 object-cover rounded-[calc(1.5rem-6px)] border-4 border-white/10"
                                 />
                             </div>
                         </div>
@@ -43,7 +43,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                             <span className="text-dark/40 dark:text-light/40 text-[10px] font-black uppercase tracking-widest">{date} • {location}</span>
                         </div>
 
-                        <h3 className="text-6xl xl:text-5xl md:text-3xl font-black text-dark dark:text-light mb-6 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors leading-[1.1]">
+                        <h3 className="text-5xl xl:text-4xl md:text-3xl sm:text-2xl xs:text-xl font-black text-dark dark:text-light mb-4 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors leading-[1.1]">
                             {title}
                         </h3>
                     </div>
@@ -121,7 +121,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                     >
                         &times;
                     </button>
-                    <div className="grid grid-cols-3 gap-8 w-full max-w-7xl" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                    <div className="grid gap-6 w-full max-w-6xl" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
                         {photos.map((photo, i) => (
                             <motion.div
                                 key={i}
@@ -213,15 +213,15 @@ const HackathonsSection = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-80px" }}
-            className="w-full py-24 bg-light/50 dark:bg-dark/50 relative overflow-hidden"
+            className="w-full py-24 sm:py-16 xs:py-10 bg-light/50 dark:bg-dark/50 relative overflow-hidden"
         >
             <Layout>
-                <div className="flex flex-col items-center justify-center text-center mb-24">
+                <div className="flex flex-col items-center justify-center text-center mb-16 sm:mb-10">
                     <AnimatedText
                         text="Hackathon Victories"
                         className="!text-8xl xl:!text-7xl lg:!text-6xl md:!text-5xl sm:!text-4xl mb-6"
                     />
-                    <p className="text-xl md:text-lg font-medium text-dark/60 dark:text-light/60 max-w-3xl leading-relaxed">
+                    <p className="text-xl md:text-lg sm:text-base xs:text-sm font-medium text-dark/60 dark:text-light/60 max-w-3xl leading-relaxed">
                         Pushing the limits of rapid innovation. A collection of winning certificates and solutions built in high-pressure competitive environments.
                     </p>
                 </div>

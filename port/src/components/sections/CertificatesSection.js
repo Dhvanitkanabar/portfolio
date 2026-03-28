@@ -30,7 +30,7 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className={`w-full p-8 lg:p-6 rounded-3xl border-2 ${isWinner
+            className={`w-full p-8 lg:p-6 sm:p-5 xs:p-4 rounded-3xl border-2 ${isWinner
                 ? "border-primary/60 dark:border-primaryDark/60 shadow-xl shadow-primary/10"
                 : "border-dark/10 dark:border-light/10 hover:border-dark/20 dark:hover:border-light/20"
                 } bg-light dark:bg-dark relative transition-all duration-500 group`}
@@ -43,7 +43,7 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
 
             <div className="flex gap-8 items-start w-full">
                 {/* Thumbnail */}
-                <div className={`flex-shrink-0 w-28 h-28 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br ${isWinner ? "from-primary to-primaryDark" : bg} p-1 shadow-lg group-hover:scale-105 transition-transform duration-500 overflow-hidden`}>
+                <div className={`flex-shrink-0 w-28 h-28 lg:w-24 lg:h-24 sm:w-20 sm:h-20 xs:w-16 xs:h-16 rounded-2xl bg-gradient-to-br ${isWinner ? "from-primary to-primaryDark" : bg} p-1 shadow-lg group-hover:scale-105 transition-transform duration-500 overflow-hidden`}>
                     {thumbnail ? (
                         <img
                             src={thumbnail}
@@ -80,13 +80,13 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
                     <span className={`text-[10px] font-black uppercase tracking-[0.25em] mb-2 ${isWinner ? "text-primary dark:text-primaryDark" : "text-dark/40 dark:text-light/40"}`}>
                         {category}
                     </span>
-                    <h3 className={`${isWinner ? "text-2xl lg:text-xl" : "text-xl lg:text-lg"} font-black text-dark dark:text-light mb-2 leading-snug pr-16`}>
+                    <h3 className={`${isWinner ? "text-2xl lg:text-xl sm:text-lg" : "text-xl lg:text-lg sm:text-base"} font-black text-dark dark:text-light mb-2 leading-snug pr-14 sm:pr-0`}>
                         {title}
                     </h3>
                     <p className="text-[11px] font-bold text-dark/50 dark:text-light/50 uppercase tracking-widest mb-3">
                         Issued: <span className="text-dark dark:text-light">{date}</span>
                     </p>
-                    <p className="text-sm font-medium text-dark/70 dark:text-light/70 leading-relaxed mb-6">
+                    <p className="text-sm sm:text-xs font-medium text-dark/70 dark:text-light/70 leading-relaxed mb-6">
                         {description}
                     </p>
                     <div className="flex items-center gap-6 mt-auto">
@@ -151,7 +151,7 @@ const CertificatesSection = () => {
                         <h2 className="text-3xl font-bold text-dark dark:text-light">Victory Highlights</h2>
                         <div className="flex-1 h-[2px] bg-gradient-to-r from-primary to-transparent" />
                     </div>
-                    <div className="grid grid-cols-2 xl:grid-cols-1 gap-10">
+                    <div className="grid grid-cols-2 xl:grid-cols-1 gap-10 sm:grid-cols-1 sm:gap-8">
                         <CertificateCard
                             title="Quasar Winner"
                             date="2026"
@@ -206,7 +206,7 @@ const CertificatesSection = () => {
                         <div className="flex-1 h-[2px] bg-gradient-to-r from-dark/20 to-transparent dark:from-light/20" />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-10 lg:grid-cols-1">
+                    <div className="grid grid-cols-2 gap-10 lg:grid-cols-1 sm:gap-8">
 
                         <CertificateCard
                             title="Intro to Programming"

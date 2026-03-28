@@ -200,7 +200,7 @@ const SkillCard = ({ name, Icon, color, level, desc, index }) => (
 // Big featured skill - spans more space at the top
 const FeaturedSkill = ({ name, Icon, color, level, desc, index }) => (
     <motion.div
-        className="relative flex flex-col items-center justify-center gap-4 p-8 rounded-3xl cursor-default group
+        className="relative flex flex-col items-center justify-center gap-4 p-8 sm:p-5 xs:p-4 rounded-3xl cursor-default group
       border border-dark/10 dark:border-light/10 overflow-hidden"
         initial={{ opacity: 0, rotateX: -25, y: 50, scale: 0.9 }}
         whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
@@ -266,7 +266,7 @@ const Skills = () => (
         {/* Heading */}
         <div className="text-center mb-4">
             <motion.h2
-                className="font-bold text-6xl dark:text-light md:text-5xl"
+                className="font-bold text-6xl dark:text-light md:text-5xl sm:text-4xl xs:text-3xl"
                 initial={{ opacity: 0, y: -24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -340,7 +340,7 @@ const Skills = () => (
                     }}
                 >
                     {/* Standardized Featured Skill Grid for all categories */}
-                    <div className="grid grid-cols-3 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                    <div className="grid grid-cols-3 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1">
                         {cat.skills.map((skill, si) => (
                             <FeaturedSkill key={skill.name} {...skill} index={si} />
                         ))}

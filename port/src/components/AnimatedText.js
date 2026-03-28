@@ -23,7 +23,7 @@ const AnimatedText = ({ text, className = "" }) => {
     const words = text.split(" ");
 
     return (
-        <h1 className={`font-bold capitalize text-8xl text-dark dark:text-light ${className}`}>
+        <h1 className={`font-bold capitalize text-8xl xs:text-5xl text-dark dark:text-light ${className}`}>
             {words.map((word, i) => (
                 <motion.span
                     key={`${word}-${i}`}
