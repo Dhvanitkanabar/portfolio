@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 
-const HackathonCard = ({ title, award, date, location, description, tech, certificateImg, results, github, live, photos = [] }) => {
+const HackathonCard = ({ title, award, date, location, description, tech, certificateImg, results, github, live, photos = [], leadPhoto }) => {
     const [showProjectOptions, setShowProjectOptions] = useState(false);
     const [showPhotos, setShowPhotos] = useState(false);
 
@@ -21,16 +21,34 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
 
             {/* Main Info Side - Now Span 12 */}
             <div className="col-span-12 flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-6">
-                    <span className="px-4 py-1.5 rounded-full bg-primary/10 dark:bg-primaryDark/10 text-primary dark:text-primaryDark text-xs font-black uppercase tracking-widest border border-primary/20">
-                        🏆 {award}
-                    </span>
-                    <span className="text-dark/40 dark:text-light/40 text-[10px] font-black uppercase tracking-widest">{date} • {location}</span>
+                <div className="flex items-start gap-12 md:flex-col md:gap-8 mb-8">
+                    {/* Lead Winner Photo Thumbnail */}
+                    {leadPhoto && (
+                        <div className="flex-shrink-0">
+                            <div className="p-1.5 rounded-3xl bg-gradient-to-br from-primary to-primaryDark shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500 overflow-hidden">
+                                <img 
+                                    src={leadPhoto} 
+                                    alt="Lead Winning Moment" 
+                                    className="w-56 h-56 md:w-full md:h-64 object-cover rounded-[calc(1.5rem-6px)] border-4 border-white/10"
+                                />
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="flex-1 flex flex-col justify-center">
+                        <div className="flex items-center gap-4 mb-6 flex-wrap">
+                            <span className="px-4 py-2 rounded-full bg-primary/10 dark:bg-primaryDark/10 text-primary dark:text-primaryDark text-xs font-black uppercase tracking-widest border border-primary/20 shadow-sm animate-pulse">
+                                🏆 {award}
+                            </span>
+                            <span className="text-dark/40 dark:text-light/40 text-[10px] font-black uppercase tracking-widest">{date} • {location}</span>
+                        </div>
+
+                        <h3 className="text-6xl xl:text-5xl md:text-3xl font-black text-dark dark:text-light mb-6 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors leading-[1.1]">
+                            {title}
+                        </h3>
+                    </div>
                 </div>
 
-                <h3 className="text-5xl md:text-3xl font-black text-dark dark:text-light mb-6 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors leading-tight">
-                    {title}
-                </h3>
 
                 <p className="text-xl md:text-base font-medium text-dark/70 dark:text-light/70 mb-8 leading-relaxed max-w-4xl">
                     {description}
@@ -155,6 +173,7 @@ const HackathonsSection = () => {
             certificateImg: "/images/achievements/electrosphere_2k26_certificate.jpg",
             github: "https://github.com/Dhvanitkanabar/secure-comm",
             live: "https://secure-comm-jade.vercel.app/",
+            leadPhoto: "/images/achievements/electrosphere_2k26_team.jpg",
             photos: [
                 "/images/achievements/electrosphere_2k26_certificate.jpg",
                 "/images/achievements/electrosphere_2k26_team.jpg",
@@ -177,6 +196,7 @@ const HackathonsSection = () => {
             ],
             github: "https://github.com/Dhvanitkanabar/CERS",
             live: "https://cers-4.onrender.com/",
+            leadPhoto: "/images/achievements/techexpo_stage.jpg",
             photos: [
                 "/images/achievements/techexpo_stage.jpg",
                 "/images/achievements/techexpo_trophy.jpg",

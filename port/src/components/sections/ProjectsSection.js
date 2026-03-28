@@ -130,18 +130,19 @@ const ProjectsSection = () => {
                         />
                     </motion.div>
 
-                    {/* Canteen & MindEase */}
-                    <motion.div className="col-span-6 sm:col-span-12" variants={gridItem}>
-                        <Project
+                    {/* Featured: Canteen Food Order */}
+                    <motion.div className="col-span-12" variants={featuredItem}>
+                        <FeaturedProject
                             title="Canteen Food Order"
                             img={canteenImg}
-                            summary="Streamlined food ordering system for university canteens with real-time menu management."
-                            link=""
+                            summary="A streamlined e-commerce solution for university canteens, allowing students to browse menus, customize orders, and track status in real-time. Features a specialized shopping cart overlay and status tracking bar for a seamless campus dining experience."
+                            link="#"
                             github="https://github.com/Dhvanitkanabar/canteen-prj"
                             doc="https://docs.google.com/document/d/1ChdA0fY8mtZZ_b0CPxkziRfA2OSUM0XFBMC-Zglod7c/edit?usp=sharing"
                             type="E-commerce"
                         />
                     </motion.div>
+
 
 
                     {/* Featured: Farmer Marketplace */}

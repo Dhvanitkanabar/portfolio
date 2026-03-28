@@ -48,7 +48,48 @@ const Icons = {
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
         </svg>
     ),
+    Node: () => (
+        <svg viewBox="0 0 24 24" fill="#339933" className="w-full h-full">
+            <path d="M12 24c-.321 0-.641-.084-.922-.247L8.14 22.016c-.438-.245-.224-.332-.08-.383-.144-.051-.358-.138-.08-.383C.951 18.04 0 11.23 0 12c0-.77.951 6.04 7.98 9.25.278.245.064.332-.08.383.144.051.358.138.08.383L11.076 23.753c.563.327 1.282.327 1.845 0l2.937-1.737c.278-.245.064-.332-.08-.383.144-.051.358-.138.08-.383 7.029-3.21 7.98-10.02 7.98-10.77 0 .75-.951 7.56-7.98 10.77.278.245.064.332-.08.383-.144.051-.358.138-.08.383l-3.037 1.737c-.281.163-.601.247-.922.247z" />
+        </svg>
+    ),
+    Express: () => (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full dark:text-white text-dark">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h3l-4 4-4-4h3z" />
+        </svg>
+    ),
+    MongoDB: () => (
+        <svg viewBox="0 0 24 24" fill="#47A248" className="w-full h-full">
+            <path d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115C12.34.486 12 0 12 0s-.34.486-.62.956c-.321.701-3.309 2.535-4.573 8.115-.951 4.205.132 8.411 2.535 11.53.25.324.498.647.747.971.047.06.094.12.14.18H10.1c.36.012.72.012 1.08 0h.82h-.82c.16.2.321.401.482.601h.67l.154-.192C14.868 21.077 18.144 16.85 17.193 9.555z" />
+        </svg>
+    ),
+    Python: () => (
+        <svg viewBox="0 0 24 24" fill="#3776AB" className="w-full h-full">
+            <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V3h-2V2H10V7h7v7h-1v-2h-3v4h1v1h-3v1h-1v-1h-1v-1h-1v-1h-1v-1h-1v-1h-1V7h1V6h3V2H6.5c-2.49 0-4.5 2.01-4.5 4.5S4.01 11 6.5 11h2V9h2v4h-5v5h4v1h3v-1h3v1h1v-1h1v-1h1v-1h1v-1h1v-1h1v-1h.3c2.49 0 4.5-2.01 4.5-4.5S21.49 8.5 19 8.5h-2v2h-2v-4h5V1.5C20 .67 19.33 0 18.5 0h-4.25z" />
+        </svg>
+    ),
+    Firebase: () => (
+        <svg viewBox="0 0 24 24" fill="#FFCA28" className="w-full h-full">
+            <path d="M12.404.032l-3.321 6.84-2.842-5.45C6.01.996 5.48.91 5.093 1.258a.5.5 0 0 0-.131.67L10.05 11.23h3.9l-1.546-11.2a.5.5 0 0 0-.496-.4h-1.05z" />
+        </svg>
+    ),
+    Java: () => (
+        <svg viewBox="0 0 24 24" fill="#ED8B00" className="w-full h-full">
+            <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 4.5c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 15c-2.83 0-5.25-1.54-6.5-3.83.04-2.12 4.17-3.67 6.5-3.67s6.46 1.55 6.5 3.67c-1.25 2.29-3.67 3.83-6.5 3.83z" />
+        </svg>
+    ),
+    SQL: () => (
+        <svg viewBox="0 0 24 24" fill="#4479A1" className="w-full h-full">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z" />
+        </svg>
+    ),
+    Postman: () => (
+        <svg viewBox="0 0 24 24" fill="#FF6C37" className="w-full h-full">
+            <path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.427 6.572.843 12.584-3.8 13.427-10.373.843-6.573-3.8-12.585-10.372-13.428zm6.543 14.398c-1.258.127-2.315-.818-2.443-2.076-.127-1.258.818-2.315 2.076-2.443 1.258-.127 2.315.818 2.443 2.076.127 1.258-.818 2.315-2.076 2.443z" />
+        </svg>
+    ),
 };
+
 
 const categories = [
     {
@@ -66,17 +107,36 @@ const categories = [
         ],
     },
     {
+        title: "Backend",
+        emoji: "🚀",
+        gradient: "from-green-500/10 to-emerald-500/10",
+        borderColor: "rgba(16,185,129,0.3)",
+        skills: [
+            { name: "Node.js", Icon: Icons.Node, color: "#339933", level: 82, desc: "Server-side JS" },
+            { name: "Express.js", Icon: Icons.Express, color: "#828282", level: 85, desc: "Web framework" },
+            { name: "MongoDB", Icon: Icons.MongoDB, color: "#47A248", level: 78, desc: "NoSQL Database" },
+            { name: "SQL", Icon: Icons.SQL, color: "#4479A1", level: 75, desc: "Relational DB" },
+            { name: "Firebase", Icon: Icons.Firebase, color: "#FFCA28", level: 80, desc: "Cloud platform" },
+            { name: "REST APIs", Icon: Icons.Next, color: "#61DAFB", level: 88, desc: "Interconnect" },
+        ],
+    },
+    {
         title: "Languages & Tools",
         emoji: "⚙️",
         gradient: "from-purple-500/10 to-pink-500/10",
         borderColor: "rgba(168,85,247,0.3)",
         skills: [
-            { name: "GitHub", Icon: Icons.GitHub, color: "#6e5494", level: 78, desc: "Version control" },
-            { name: "C Programming", Icon: Icons.C, color: "#A8B9CC", level: 72, desc: "Low-level logic" },
+            { name: "Python", Icon: Icons.Python, color: "#3776AB", level: 80, desc: "Automation & AI" },
+            { name: "Java", Icon: Icons.Java, color: "#ED8B00", level: 72, desc: "App development" },
+            { name: "C Language", Icon: Icons.C, color: "#A8B9CC", level: 78, desc: "Sys programming" },
+            { name: "GitHub", Icon: Icons.GitHub, color: "#6e5494", level: 85, desc: "Version control" },
             { name: "UI/UX Design", Icon: Icons.Design, color: "#B63E96", level: 75, desc: "User experience" },
+            { name: "Postman", Icon: Icons.Postman, color: "#FF6C37", level: 82, desc: "API Testing" },
         ],
     },
 ];
+
+
 
 const ProficiencyBar = ({ level, color }) => (
     <div className="w-full h-1.5 bg-dark/10 dark:bg-light/10 rounded-full overflow-hidden mt-3">
@@ -279,22 +339,14 @@ const Skills = () => (
                         borderColor: cat.borderColor,
                     }}
                 >
-                    {ci === 0 ? (
-                        /* Featured 6-up grid */
-                        <div className="grid grid-cols-3 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-                            {cat.skills.map((skill, si) => (
-                                <FeaturedSkill key={skill.name} {...skill} index={si} />
-                            ))}
-                        </div>
-                    ) : (
-                        /* Compact list */
-                        <div className="grid grid-cols-3 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-                            {cat.skills.map((skill, si) => (
-                                <SkillCard key={skill.name} {...skill} index={si} />
-                            ))}
-                        </div>
-                    )}
+                    {/* Standardized Featured Skill Grid for all categories */}
+                    <div className="grid grid-cols-3 gap-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                        {cat.skills.map((skill, si) => (
+                            <FeaturedSkill key={skill.name} {...skill} index={si} />
+                        ))}
+                    </div>
                 </div>
+
             </motion.div>
         ))}
     </motion.div>
