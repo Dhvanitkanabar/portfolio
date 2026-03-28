@@ -164,7 +164,7 @@ const HomeSection = () => {
                         transition={{ delay: 0.7 }}
                     >
                         <MagneticLink
-                            href="/Dhvanit_Kanabar_Elite_Resume_Spaced.pdf"
+                            href="/Dhvanit_Kanabar_Resume.pdf"
                             target="_blank"
                             className="flex items-center justify-center bg-dark text-light py-4 px-10 rounded-2xl text-lg font-bold hover:shadow-[0_15px_30px_-5px_rgba(182,62,150,0.3)] transition-all duration-300 dark:bg-light dark:text-dark min-w-[180px]"
                         >

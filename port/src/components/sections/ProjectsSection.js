@@ -6,13 +6,12 @@ import FeaturedProject from "@/components/FeaturedProject";
 import Project from "@/components/Project";
 
 // Assets
-import secureCommImg from "../../../public/images/projects/secure_comm_thumbnail_1772742637073.png";
-import auraImg from "../../../public/images/projects/aura_messaging_thumbnail_1772742672059.png";
-import hackersPanelImg from "../../../public/images/projects/hackers_panel_thumbnail_1772742713267.png";
-import mindEaseImg from "../../../public/images/projects/crypto-screener-cover-image.jpg";
-import canteenImg from "../../../public/images/projects/portfolio-cover-image.jpg";
-import emergencyImg from "../../../public/images/projects/agency-website-cover-image.jpg";
-import farmerImg from "../../../public/images/projects/devdreaming.jpg";
+import secureCommImg from "../../../public/images/projects/secure_ui.png";
+import auraImg from "../../../public/images/projects/aura_ui.png";
+import hackersPanelImg from "../../../public/images/projects/hackers_ui.png";
+import canteenImg from "../../../public/images/projects/canteen_ui.png";
+import emergencyImg from "../../../public/images/projects/cers_ui.png";
+import farmerImg from "../../../public/images/projects/farmer_ui.png";
 
 // Stagger grid container
 const gridContainer = {
