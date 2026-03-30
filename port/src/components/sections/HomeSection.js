@@ -73,7 +73,7 @@ const HomeSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col items-center justify-center w-full h-[90vh] min-h-[600px] relative overflow-hidden pt-12"
+            className="flex flex-col items-center justify-center w-full min-h-screen sm:min-h-[100svh] relative overflow-hidden pt-20 pb-16 sm:pt-24 sm:pb-20"
         >
             {/* Background Big Text Watermark - made more compact */}
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none -z-20 overflow-hidden select-none">
@@ -103,7 +103,7 @@ const HomeSection = () => {
                     
                     {/* Compact Status Badge */}
                     <motion.div
-                        className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20"
+                        className="inline-flex items-center gap-2 mb-4 sm:mb-3 px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
@@ -116,7 +116,7 @@ const HomeSection = () => {
                     </motion.div>
 
                     <motion.h1 
-                        className="text-7xl xl:text-6xl md:text-5xl sm:text-4xl font-black leading-none text-dark dark:text-light mb-4"
+                        className="text-7xl xl:text-6xl md:text-5xl sm:text-4xl xs:text-3xl font-black leading-tight text-dark dark:text-light mb-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
@@ -127,7 +127,7 @@ const HomeSection = () => {
                     </motion.h1>
 
                     <motion.div 
-                        className="text-3xl xl:text-2xl md:text-xl font-bold mb-6 h-[1.2em]"
+                        className="text-3xl xl:text-2xl md:text-xl sm:text-lg xs:text-base font-bold mb-6 h-auto min-h-[1.6em]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
@@ -136,7 +136,7 @@ const HomeSection = () => {
                     </motion.div>
 
                     <motion.p 
-                        className="text-lg md:text-base font-medium text-dark/70 dark:text-light/70 mb-8 max-w-xl"
+                        className="text-lg md:text-base sm:text-sm font-medium text-dark/70 dark:text-light/70 mb-6 max-w-xl px-2 sm:px-0"
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
@@ -151,14 +151,14 @@ const HomeSection = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                     >
-                        {["React", "Next.js", "TailwindCSS", "JavaScript", "UI/UX"].map((tag) => (
+                        {["React", "TailwindCSS", "JavaScript", "UI/UX"].map((tag) => (
                             <SkillBadge key={tag} text={tag} />
                         ))}
                     </motion.div>
 
                     {/* Standardized Buttons */}
                     <motion.div 
-                        className="flex items-center gap-6 sm:flex-col sm:w-full sm:gap-4"
+                        className="flex items-center gap-6 sm:flex-col sm:items-stretch sm:w-full sm:max-w-xs sm:mx-auto sm:gap-3"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 }}
@@ -166,17 +166,17 @@ const HomeSection = () => {
                         <MagneticLink
                             href="/Dhvanit_Kanabar_Resume.pdf"
                             target="_blank"
-                            className="flex items-center justify-center bg-dark text-light py-4 px-10 rounded-2xl text-lg font-bold hover:shadow-[0_15px_30px_-5px_rgba(182,62,150,0.3)] transition-all duration-300 dark:bg-light dark:text-dark min-w-[180px]"
+                            className="flex flex-row items-center justify-center bg-dark text-light py-4 px-10 sm:py-3.5 sm:px-6 rounded-2xl text-lg sm:text-base font-bold hover:shadow-[0_15px_30px_-5px_rgba(182,62,150,0.3)] transition-all duration-300 dark:bg-light dark:text-dark min-w-[180px] sm:min-w-0 sm:w-full active:scale-95 group"
                         >
-                            Resume <LinkArrow className="w-6 ml-2" />
+                            <span className="whitespace-nowrap">Get Resume</span> <LinkArrow className="w-5 h-5 ml-2 sm:ml-1.5 flex-shrink-0" />
                         </MagneticLink>
                         
                         <MagneticLink
                             href="#contact"
-                            className="text-lg font-bold text-dark dark:text-light transition-all duration-300 relative group"
+                            className="text-lg sm:text-base font-bold text-dark dark:text-light transition-all duration-300 relative group sm:text-center sm:py-3 sm:border sm:border-dark/20 sm:dark:border-light/20 sm:rounded-2xl sm:bg-dark/5 sm:dark:bg-light/5"
                         >
                             Contact Me
-                            <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-dark dark:bg-light scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                            <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-dark dark:bg-light scale-x-0 group-hover:scale-x-100 transition-transform duration-300 sm:hidden" />
                         </MagneticLink>
                     </motion.div>
                 </div>

@@ -77,7 +77,7 @@ const NavBar = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-500 px-24 xl:px-12 lg:px-8 md:px-6 py-4 flex items-center justify-between
+            className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-500 px-32 xl:px-24 lg:px-16 md:px-12 sm:px-8 xs:px-4 py-4 flex items-center justify-between
             ${scrolled ? "bg-light/60 dark:bg-dark/60 backdrop-blur-xl py-3 md:py-2 border-b border-dark/5 dark:border-light/5" : "bg-transparent"}`}
         >
             {/* Logo */}

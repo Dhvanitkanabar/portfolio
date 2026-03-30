@@ -112,7 +112,7 @@ const ContactSection = () => {
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, margin: "-80px" }}
             style={{ perspective: "1400px", transformOrigin: "top center" }}
-            className="w-full py-24 relative overflow-hidden"
+            className="w-full py-24 sm:py-16 xs:py-12 relative overflow-hidden"
         >
             {/* Animated background gradient blobs */}
             <motion.div
@@ -145,10 +145,10 @@ const ContactSection = () => {
                 >
                     <AnimatedText
                         text="Let's Build Together"
-                        className="!text-7xl xl:!text-6xl lg:!text-5xl md:!text-4xl sm:!text-3xl"
+                        className="!text-7xl xl:!text-6xl lg:!text-5xl md:!text-4xl sm:!text-3xl xs:!text-2xl"
                     />
                     <motion.p
-                        className="mt-6 text-xl font-medium text-dark/70 dark:text-light/70 max-w-2xl mx-auto leading-relaxed"
+                        className="mt-6 text-xl sm:text-lg xs:text-base font-medium text-dark/70 dark:text-light/70 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -160,7 +160,7 @@ const ContactSection = () => {
                 </motion.div>
 
                 {/* Main grid */}
-                <div className="grid grid-cols-2 gap-12 lg:grid-cols-1">
+                <div className="grid grid-cols-2 gap-12 lg:grid-cols-1 sm:gap-8">
                     {/* Left — contact info cards */}
                     <motion.div
                         className="flex flex-col gap-6"
@@ -203,7 +203,7 @@ const ContactSection = () => {
                                     <p className="text-xs font-bold uppercase tracking-widest text-dark/50 dark:text-light/50 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors">
                                         {label}
                                     </p>
-                                    <p className="font-bold text-dark dark:text-light mt-0.5">{value}</p>
+                                    <p className="font-bold text-dark dark:text-light mt-0.5 sm:text-sm">{value}</p>
                                 </div>
                                 <motion.span
                                     className="ml-auto text-dark/30 dark:text-light/30 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors"
@@ -242,7 +242,7 @@ const ContactSection = () => {
 
                     {/* Right — Contact Form Card */}
                     <motion.div
-                        className="flex flex-col p-10 rounded-3xl
+                        className="flex flex-col p-10 sm:p-8 xs:p-4 rounded-3xl
               border border-dark/10 dark:border-light/10 relative overflow-hidden
               bg-light/40 dark:bg-dark/40 backdrop-blur-lg"
                         initial={{ opacity: 0, rotateX: -15, y: 60, scale: 0.94 }}

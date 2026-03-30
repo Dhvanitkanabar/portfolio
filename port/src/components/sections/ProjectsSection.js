@@ -72,7 +72,7 @@ const ProjectsSection = () => {
                 />
 
                 <motion.div
-                    className="grid grid-cols-12 gap-24 gap-y-16 xl:gap-x-16 lg:gap-x-8 sm:gap-x-0 sm:gap-y-10 xs:gap-y-6"
+                    className="grid grid-cols-12 gap-16 gap-y-24 xl:gap-12 lg:gap-x-8 md:gap-y-12 sm:gap-y-10 xs:gap-y-8"
                     variants={gridContainer}
                     initial="hidden"
                     whileInView="visible"

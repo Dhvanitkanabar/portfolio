@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 const HireMe = () => {
     return (
         <div
-            className="fixed left-4 bottom-4 flex items-center justify-center overflow-hidden z-40
-            lg:left-auto lg:right-2 lg:bottom-2"
+            className="fixed left-4 bottom-4 flex items-center justify-center overflow-hidden z-50
+            lg:left-auto lg:right-4 lg:bottom-10 md:right-3 md:bottom-8 sm:right-2 sm:bottom-6"
         >
             <motion.div 
                 initial={{ scale: 0, opacity: 0 }}

@@ -7,7 +7,7 @@ export const GithubIcon = ({ className, ...rest }) => (
         height="1em"
         viewBox="0 0 512 512"
         {...rest}
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
     >
         <path fill="none" d="M0 0h512v512H0z" />
         <path
@@ -24,7 +24,7 @@ export const LinkedInIcon = ({ className, ...rest }) => (
         height="1em"
         viewBox="0 0 24 24"
         {...rest}
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
     >
         <path
             fill="currentColor"
@@ -40,7 +40,7 @@ export const TwitterIcon = ({ className, ...rest }) => (
         height="1em"
         viewBox="0 0 256 209"
         {...rest}
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
     >
         <path fill="none" d="M0 0h256v209H0z" />
         <path
@@ -57,7 +57,7 @@ export const SunIcon = ({ className, ...rest }) => (
         height="24"
         viewBox="0 0 24 24"
         {...rest}
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
     >
         <rect x="0" y="0" width="24" height="24" fill="rgba(255, 255, 255, 0)" />
         <circle cx="12" cy="12" r="5" fill="currentColor" />
@@ -79,7 +79,7 @@ export const MoonIcon = ({ className, ...rest }) => (
         height="24"
         viewBox="0 0 24 24"
         {...rest}
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
     >
         <rect x="0" y="0" width="24" height="24" fill="rgba(255, 255, 255, 0)" />
         <path
@@ -95,7 +95,7 @@ export const LinkArrow = ({ className, ...rest }) => (
         width={24}
         height={24}
         viewBox="0 0 24 24"
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
         {...rest}
     >
         <path fill="none" d="M0 0h24v24H0z" />
@@ -117,7 +117,7 @@ export const CircularText = ({ className, ...rest }) => (
         height="496"
         viewBox="0 0 496 496"
         xmlSpace="preserve"
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
         {...rest}
     >
         <path d="M234.709 430.04c-.856-8.144-1.693-15.837-2.53-23.53l-1.202-.281c-4.328 7.025-8.66 14.048-12.983 21.076-.786 1.276-1.597 2.541-2.302 3.862-1.19 2.23-2.64 3.718-5.52 3.1-2.984-.64-3.269-2.735-3.526-5.216-1.021-9.853-2.186-19.691-3.465-31.02-5.824 9.69-11.023 18.148-16.013 26.728-2.136 3.671-4.532 4.592-8.005 1.873.081-2.568 1.784-4.33 2.944-6.291 5.848-9.894 11.813-19.72 17.695-29.593 1.202-2.018 2.465-3.423 5.18-2.695 2.768.741 4.08 2.124 4.361 5.149.888 9.53 2.102 19.032 3.284 29.375 4.161-4.222 5.983-8.91 8.686-12.98 2.855-4.297 5.458-8.769 8.02-13.25 1.283-2.245 3.03-2.15 5.127-1.717 1.928.397 3.567.971 3.8 3.26 1.398 13.72 2.797 27.441 4.162 41.165.044.444-.267.924-.405 1.363-6.239-.086-6.239-.086-7.308-10.378zM262.215 401.264c-2.09 2.312-4.258 2.664-6.445 1.065-1.596-1.166-2.202-2.908-1.41-4.869.947-2.347 2.808-3.425 5.183-2.714 3.062.916 4.18 3.069 2.672 6.518zM236.4 100.682c-.077-3.412 1.468-4.963 4.476-4.993 2.362-.024 3.67 1.39 4.117 3.53.472 2.257-.627 3.992-2.674 4.725-2.749.984-4.847.028-5.92-3.262z" />
@@ -131,7 +131,7 @@ export const YouTubeIcon = ({ className, ...rest }) => (
         height="1em"
         viewBox="0 0 24 24"
         {...rest}
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
     >
         <path
             fill="currentColor"
@@ -147,7 +147,7 @@ export const LeetCodeIcon = ({ className, ...rest }) => (
         height="1em"
         viewBox="0 0 50 50"
         {...rest}
-        className={`w-full h-auto ${className}`}
+        className={`${className}`}
     >
         <path fill="none" d="M0 0h50v50H0z" />
         <path

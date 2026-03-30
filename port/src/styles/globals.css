@@ -5,6 +5,12 @@
 /* ─── Smooth Scroll (handled by Lenis) ─── */
 html {
   scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ─────────────────────────────────────────

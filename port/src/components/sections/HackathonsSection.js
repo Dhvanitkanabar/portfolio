@@ -14,7 +14,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="col-span-12 grid grid-cols-12 gap-12 p-10 lg:p-6 sm:p-5 xs:p-4 rounded-[2.5rem] bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden mb-8"
+            className="col-span-12 grid grid-cols-12 gap-8 sm:gap-4 p-10 lg:p-6 sm:p-5 xs:p-4 rounded-[2.5rem] sm:rounded-3xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden mb-8"
         >
             {/* Background Glow */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-primary/10 transition-colors" />
@@ -29,7 +29,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                                 <img 
                                     src={leadPhoto} 
                                     alt="Lead Winning Moment" 
-                                    className="w-44 h-44 sm:w-full sm:h-48 xs:h-36 object-cover rounded-[calc(1.5rem-6px)] border-4 border-white/10"
+                                    className="w-44 h-44 sm:w-32 sm:h-32 xs:w-full xs:h-40 object-cover rounded-[calc(1.5rem-6px)] border-4 border-white/10"
                                 />
                             </div>
                         </div>
@@ -50,7 +50,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                 </div>
 
 
-                <p className="text-xl md:text-base font-medium text-dark/70 dark:text-light/70 mb-8 leading-relaxed max-w-4xl">
+                <p className="text-lg md:text-base sm:text-sm font-medium text-dark/70 dark:text-light/70 mb-8 leading-relaxed max-w-4xl">
                     {description}
                 </p>
 
@@ -77,7 +77,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                 {/* Footer Actions - Standard Project Style */}
                 <div className="w-full h-[1px] bg-dark/5 dark:bg-light/5 my-8" />
 
-                <div className="flex items-center justify-between w-full flex-wrap gap-6">
+                <div className="flex items-center justify-between w-full flex-wrap gap-4 sm:gap-3">
                     <div className="flex items-center gap-8 flex-wrap">
                         {showProjectOptions ? (
                             <div className="flex items-center gap-6 animate-fadeIn">
@@ -219,7 +219,7 @@ const HackathonsSection = () => {
                 <div className="flex flex-col items-center justify-center text-center mb-16 sm:mb-10">
                     <AnimatedText
                         text="Hackathon Victories"
-                        className="!text-8xl xl:!text-7xl lg:!text-6xl md:!text-5xl sm:!text-4xl mb-6"
+                        className="!text-8xl xl:!text-7xl lg:!text-6xl md:!text-5xl sm:!text-3xl xs:!text-2xl mb-6"
                     />
                     <p className="text-xl md:text-lg sm:text-base xs:text-sm font-medium text-dark/60 dark:text-light/60 max-w-3xl leading-relaxed">
                         Pushing the limits of rapid innovation. A collection of winning certificates and solutions built in high-pressure competitive environments.

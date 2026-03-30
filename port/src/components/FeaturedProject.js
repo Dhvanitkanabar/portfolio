@@ -13,12 +13,12 @@ const FeaturedProject = ({ type, title, summary, img, link, github, doc }) => {
             {/* Animated backgrounds */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full -mr-40 -mt-40 blur-[100px] group-hover:bg-primary/10 transition-colors duration-700" />
 
-            <div className="flex items-center justify-between gap-12 lg:flex-col lg:gap-8 relative z-10">
+            <div className="flex items-start justify-between gap-12 lg:flex-col lg:gap-8 sm:gap-6 relative z-10">
                 {/* Image Section */}
                 <Link
                     href={link}
                     target="_blank"
-                    className="w-[55%] lg:w-full cursor-pointer overflow-hidden rounded-3xl border border-dark/5 dark:border-light/5 shadow-2xl group-hover:border-primary/30 transition-all duration-500 bg-dark/5 dark:bg-light/5"
+                    className="w-[52%] lg:w-full cursor-pointer overflow-hidden rounded-3xl border border-dark/5 dark:border-light/5 shadow-2xl group-hover:border-primary/30 transition-all duration-500 bg-dark/5 dark:bg-light/5 flex-shrink-0"
                 >
                     <FramerImage
                         src={img}
@@ -33,7 +33,7 @@ const FeaturedProject = ({ type, title, summary, img, link, github, doc }) => {
                 </Link>
 
                 {/* Content Section */}
-                <div className="w-[45%] lg:w-full flex flex-col items-start justify-center">
+                <div className="w-[42%] lg:w-full flex flex-col items-start justify-center">
                     <span className="text-primary dark:text-primaryDark font-black text-xs uppercase tracking-[0.4em] mb-4">
                         {type}
                     </span>
@@ -52,7 +52,7 @@ const FeaturedProject = ({ type, title, summary, img, link, github, doc }) => {
                         {summary}
                     </p>
 
-                    <div className="flex items-center gap-4 sm:gap-2 w-full flex-wrap">
+                    <div className="flex items-center gap-3 sm:gap-2 w-full flex-wrap">
                         {link && link !== "#" && (
                             <Link
                                 href={link}

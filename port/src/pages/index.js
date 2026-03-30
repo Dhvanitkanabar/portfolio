@@ -34,9 +34,9 @@ export default function Home() {
           <CertificatesSection />
           <Education />
           <ContactSection />
-          <HireMe />
         </div>
       </main>
+      <HireMe />
     </>
   );
 }

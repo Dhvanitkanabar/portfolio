@@ -62,7 +62,7 @@ const AboutSection = () => {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, margin: "-80px" }}
             style={{ perspective: "1400px", transformOrigin: "top center" }}
-            className="w-full flex flex-col items-center justify-center pt-32"
+            className="w-full flex flex-col items-center justify-center pt-24 sm:pt-16"
         >
             <Layout className="pt-16">
                 <AnimatedText
@@ -70,7 +70,7 @@ const AboutSection = () => {
                     className="mb-12 xl:!text-7xl lg:!text-6xl md:!text-5xl sm:!text-4xl xs:!text-3xl sm:mb-6"
                 />
                 <motion.div
-                    className="grid w-full grid-cols-8 gap-16 sm:gap-8"
+                    className="grid w-full grid-cols-8 gap-16 xl:gap-10 md:gap-8 sm:gap-6 md:flex md:flex-col"
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="visible"
@@ -78,10 +78,10 @@ const AboutSection = () => {
                 >
                     {/* Biography — slides from left */}
                     <motion.div
-                        className="col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 md:col-span-8"
+                        className="col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:col-span-8 md:w-full"
                         variants={slideInFromLeft}
                     >
-                        <h2 className="mb-6 text-2xl font-bold uppercase text-dark/75 dark:text-light/75 tracking-widest">
+                        <h2 className="mb-4 text-2xl sm:text-xl font-bold uppercase text-dark/75 dark:text-light/75 tracking-widest">
                             Biography
                         </h2>
                         <motion.p
@@ -107,7 +107,7 @@ const AboutSection = () => {
 
                     {/* Portrait — scales in from center */}
                     <motion.div
-                        className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8 dark:bg-dark dark:border-light xl:col-span-4 md:order-1 md:col-span-8"
+                        className="col-span-3 relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8 sm:p-5 dark:bg-dark dark:border-light xl:col-span-4 md:col-span-8 md:w-full md:order-1"
                         variants={{
                             hidden: { opacity: 0, scale: 0.85 },
                             visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
@@ -128,7 +128,7 @@ const AboutSection = () => {
 
                     {/* Stats — slides from right */}
                     <motion.div
-                        className="col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row xl:items-center md:order-3"
+                        className="col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row xl:items-center md:col-span-8 md:w-full md:flex-row md:order-3 sm:gap-4"
                         variants={slideInFromRight}
                     >
                         <motion.div

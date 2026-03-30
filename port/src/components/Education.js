@@ -44,7 +44,7 @@ const Education = () => {
     return (
         <motion.div
             id="education"
-            className="my-64"
+            className="my-64 md:my-32 sm:my-24 xs:my-16"
             initial={{ opacity: 0, rotateX: -12, y: 80 }}
             whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}

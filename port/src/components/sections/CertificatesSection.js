@@ -41,7 +41,7 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
                 </div>
             )}
 
-            <div className="flex gap-8 items-start w-full">
+            <div className="flex gap-6 sm:gap-4 xs:flex-col items-start w-full">
                 {/* Thumbnail */}
                 <div className={`flex-shrink-0 w-28 h-28 lg:w-24 lg:h-24 sm:w-20 sm:h-20 xs:w-16 xs:h-16 rounded-2xl bg-gradient-to-br ${isWinner ? "from-primary to-primaryDark" : bg} p-1 shadow-lg group-hover:scale-105 transition-transform duration-500 overflow-hidden`}>
                     {thumbnail ? (
@@ -80,7 +80,7 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
                     <span className={`text-[10px] font-black uppercase tracking-[0.25em] mb-2 ${isWinner ? "text-primary dark:text-primaryDark" : "text-dark/40 dark:text-light/40"}`}>
                         {category}
                     </span>
-                    <h3 className={`${isWinner ? "text-2xl lg:text-xl sm:text-lg" : "text-xl lg:text-lg sm:text-base"} font-black text-dark dark:text-light mb-2 leading-snug pr-14 sm:pr-0`}>
+                    <h3 className={`${isWinner ? "text-2xl lg:text-xl sm:text-lg xs:text-base" : "text-xl lg:text-lg sm:text-base xs:text-sm"} font-black text-dark dark:text-light mb-2 leading-snug pr-14 sm:pr-8 xs:pr-0`}>
                         {title}
                     </h3>
                     <p className="text-[11px] font-bold text-dark/50 dark:text-light/50 uppercase tracking-widest mb-3">
@@ -135,12 +135,12 @@ const CertificatesSection = () => {
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primaryDark/5 rounded-full -ml-48 -mb-48 blur-3xl" />
 
             <Layout className="pt-0">
-                <div className="text-center mb-24">
+                <div className="text-center mb-16 sm:mb-10">
                     <AnimatedText
                         text="Achievements & Honors"
-                        className="!text-7xl xl:!text-6xl lg:!text-5xl md:!text-4xl sm:!text-3xl"
+                        className="!text-7xl xl:!text-6xl lg:!text-5xl md:!text-4xl sm:!text-3xl xs:!text-2xl"
                     />
-                    <p className="text-lg font-medium text-dark/75 dark:text-light/75 mt-4 max-w-2xl mx-auto">
+                    <p className="text-lg sm:text-base font-medium text-dark/75 dark:text-light/75 mt-4 max-w-2xl mx-auto px-4 sm:px-0">
                         A showcase of technical excellence, competitive victories, and continuous learning milestones.
                     </p>
                 </div>
@@ -151,7 +151,7 @@ const CertificatesSection = () => {
                         <h2 className="text-3xl font-bold text-dark dark:text-light">Victory Highlights</h2>
                         <div className="flex-1 h-[2px] bg-gradient-to-r from-primary to-transparent" />
                     </div>
-                    <div className="grid grid-cols-2 xl:grid-cols-1 gap-10 sm:grid-cols-1 sm:gap-8">
+                    <div className="grid grid-cols-2 xl:grid-cols-1 gap-8 sm:grid-cols-1 sm:gap-6">
                         <CertificateCard
                             title="Quasar Winner"
                             date="2026"
@@ -206,7 +206,7 @@ const CertificatesSection = () => {
                         <div className="flex-1 h-[2px] bg-gradient-to-r from-dark/20 to-transparent dark:from-light/20" />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-10 lg:grid-cols-1 sm:gap-8">
+                    <div className="grid grid-cols-2 gap-8 lg:grid-cols-1 sm:gap-6">
 
                         <CertificateCard
                             title="Intro to Programming"
