@@ -85,8 +85,8 @@ const ContactSection = () => {
         const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
 
         if (SERVICE_ID === "YOUR_SERVICE_ID" || !SERVICE_ID) {
-            console.error("❌ EmailJS Error: Configuration Missing!");
-            setStatus({ loading: false, success: false, error: true });
+            console.error("❌ EmailJS Error: Configuration Missing in Environment Variables!");
+            setStatus({ loading: false, success: false, error: "config_missing" });
             return;
         }
 
@@ -98,8 +98,8 @@ const ContactSection = () => {
                 formRef.current.reset();
                 setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
             }, (error) => {
-                console.error("EmailJS Error:", error.text);
-                setStatus({ loading: false, success: false, error: true });
+                console.error("EmailJS Send Error:", error.text || error);
+                setStatus({ loading: false, success: false, error: "send_failed" });
                 setTimeout(() => setStatus(prev => ({ ...prev, error: false })), 5000);
             });
     };
@@ -312,8 +312,10 @@ const ContactSection = () => {
                                     </>
                                 ) : status.success ? (
                                     "✨ Message Sent!"
-                                ) : status.error ? (
-                                    status.loading ? "❌ Error" : "❌ Configure API Keys"
+                                ) : status.error === "config_missing" ? (
+                                    "❌ Config Missing"
+                                ) : status.error === "send_failed" ? (
+                                    "❌ Send Failed"
                                 ) : (
                                     "Send Message →"
                                 )}
