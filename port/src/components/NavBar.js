@@ -60,8 +60,24 @@ const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
-    const sectionIds = ["home", "about", "skills", "projects", "certificates", "education", "contact"];
+    const sectionIds = ["home", "about", "skills", "projects", "figma-designs", "certificates", "achievements", "education", "contact"];
     const activeId = useScrollSpy(sectionIds);
+
+    useEffect(() => {
+        if (activeId) {
+            let title = "Dhvanit Kanabar";
+            if (activeId !== "home") {
+                const formattedId = activeId
+                    .split('-')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+                title = `${formattedId} | ${title}`;
+            } else {
+                title = `${title} | Professional Portfolio`;
+            }
+            document.title = title;
+        }
+    }, [activeId]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -91,7 +107,9 @@ const NavBar = () => {
                 <CustomLink href="#about" title="About" isActive={activeId === "about"} />
                 <CustomLink href="#skills" title="Skills" isActive={activeId === "skills"} />
                 <CustomLink href="#projects" title="Projects" isActive={activeId === "projects"} />
+                <CustomLink href="#figma-designs" title="Design" isActive={activeId === "figma-designs"} />
                 <CustomLink href="#certificates" title="Certificates" isActive={activeId === "certificates"} />
+                <CustomLink href="#achievements" title="Awards" isActive={activeId === "achievements"} />
                 <CustomLink href="#education" title="Education" isActive={activeId === "education"} />
                 <CustomLink href="#contact" title="Contact" isActive={activeId === "contact"} />
             </nav>
@@ -155,7 +173,9 @@ const NavBar = () => {
                                 <CustomMobileLink href="#about" title="About" toggle={toggleMenu} isActive={activeId === "about"} />
                                 <CustomMobileLink href="#skills" title="Skills" toggle={toggleMenu} isActive={activeId === "skills"} />
                                 <CustomMobileLink href="#projects" title="Projects" toggle={toggleMenu} isActive={activeId === "projects"} />
+                                <CustomMobileLink href="#figma-designs" title="Design" toggle={toggleMenu} isActive={activeId === "figma-designs"} />
                                 <CustomMobileLink href="#certificates" title="Certificates" toggle={toggleMenu} isActive={activeId === "certificates"} />
+                                <CustomMobileLink href="#achievements" title="Awards" toggle={toggleMenu} isActive={activeId === "achievements"} />
                                 <CustomMobileLink href="#education" title="Education" toggle={toggleMenu} isActive={activeId === "education"} />
                                 <CustomMobileLink href="#contact" title="Contact" toggle={toggleMenu} isActive={activeId === "contact"} />
                             </nav>

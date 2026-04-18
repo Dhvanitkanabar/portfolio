@@ -1,17 +1,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { GithubIcon } from "./Icons";
+import { GithubIcon, YouTubeIcon, PostmanIcon, FigmaIcon } from "./Icons";
 import { motion } from "framer-motion";
 
 
 const FramerImage = motion(Image);
 
-const Project = ({ title, type, img, link, github, summary, doc }) => {
+const Project = ({ title, type, img, link, github, summary, doc, youtube, postman, figma }) => {
     return (
         <article className="w-full h-full flex flex-col items-start justify-center rounded-[2rem] border border-dark/10 bg-light/40 backdrop-blur-sm p-8 sm:p-6 xs:p-4 relative dark:bg-dark/40 dark:border-light/10 overflow-hidden transition-all duration-500 hover:shadow-2xl group text-left">
             <Link
-                href={link}
+                href={link || github}
                 target="_blank"
                 className="w-full cursor-pointer overflow-hidden rounded-2xl bg-dark/5 dark:bg-light/5 border border-dark/5 dark:border-light/5 shadow-lg"
             >
@@ -32,7 +32,7 @@ const Project = ({ title, type, img, link, github, summary, doc }) => {
                 </span>
 
                 <Link
-                    href={link}
+                    href={link || github}
                     target="_blank"
                     className="hover:text-primary dark:hover:text-primaryDark transition-colors duration-300"
                 >
@@ -48,7 +48,7 @@ const Project = ({ title, type, img, link, github, summary, doc }) => {
                 )}
 
                 <div className="w-full flex items-center justify-between flex-wrap gap-3 mt-auto pt-4 border-t border-dark/5 dark:border-light/5">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 flex-wrap">
                         {link && link !== "#" && (
                             <Link
                                 href={link}
@@ -68,13 +68,46 @@ const Project = ({ title, type, img, link, github, summary, doc }) => {
                             </Link>
                         )}
                     </div>
-                    <Link
-                        href={github}
-                        target="_blank"
-                        className="w-8 h-8 flex items-center justify-center rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 hover:text-primary dark:hover:text-primaryDark transition-all duration-300"
-                    >
-                        <GithubIcon className="w-5 h-5 text-dark/60 dark:text-light/60 group-hover:text-dark dark:group-hover:text-light" />
-                    </Link>
+                    <div className="flex items-center gap-2">
+                        <Link
+                            href={github}
+                            target="_blank"
+                            className="w-8 h-8 flex items-center justify-center rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 hover:text-primary dark:hover:text-primaryDark transition-all duration-300"
+                            title="GitHub Repo"
+                        >
+                            <GithubIcon className="w-4 h-4 text-dark/60 dark:text-light/60 group-hover:text-dark dark:group-hover:text-light" />
+                        </Link>
+                        {youtube && (
+                            <Link
+                                href={youtube}
+                                target="_blank"
+                                className="w-8 h-8 flex items-center justify-center rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 hover:text-red-500 transition-all duration-300"
+                                title="YouTube Demo"
+                            >
+                                <YouTubeIcon className="w-4 h-4 text-red-500" />
+                            </Link>
+                        )}
+                        {postman && (
+                            <Link
+                                href={postman}
+                                target="_blank"
+                                className="w-8 h-8 flex items-center justify-center rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 hover:text-orange-500 transition-all duration-300"
+                                title="API Documentation (Postman)"
+                            >
+                                <PostmanIcon className="w-4 h-4" />
+                            </Link>
+                        )}
+                        {figma && (
+                            <Link
+                                href={figma}
+                                target="_blank"
+                                className="w-8 h-8 flex items-center justify-center rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 hover:text-pink-500 transition-all duration-300"
+                                title="Figma Design"
+                            >
+                                <FigmaIcon className="w-4 h-4" />
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </div>
         </article>

@@ -168,7 +168,7 @@ const HomeSection = () => {
                             target="_blank"
                             className="flex flex-row items-center justify-center bg-dark text-light py-4 px-10 sm:py-3.5 sm:px-6 rounded-2xl text-lg sm:text-base font-bold hover:shadow-[0_15px_30px_-5px_rgba(182,62,150,0.3)] transition-all duration-300 dark:bg-light dark:text-dark min-w-[180px] sm:min-w-0 sm:w-full active:scale-95 group"
                         >
-                            <span className="whitespace-nowrap">Get Resume</span> <LinkArrow className="w-5 h-5 ml-2 sm:ml-1.5 flex-shrink-0" />
+                            <span className="whitespace-nowrap">View Resume</span> <LinkArrow className="w-5 h-5 ml-2 sm:ml-1.5 flex-shrink-0" />
                         </MagneticLink>
                         
                         <MagneticLink
