@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import { FigmaIcon } from "../Icons";
+import Image from "next/image";
 
 const FigmaDesignCard = ({ title, img, figmaLink, description }) => {
     return (
@@ -14,7 +15,13 @@ const FigmaDesignCard = ({ title, img, figmaLink, description }) => {
             className="col-span-12 grid grid-cols-12 gap-8 p-8 rounded-3xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 backdrop-blur-sm hover:shadow-xl transition-all duration-300 group"
         >
             <div className="col-span-6 lg:col-span-12 overflow-hidden rounded-2xl border border-dark/5 dark:border-light/5">
-                <img src={img} alt={title} className="w-full h-auto hover:scale-105 transition-transform duration-500" />
+                <Image 
+                    src={img} 
+                    alt={title} 
+                    className="w-full h-auto hover:scale-105 transition-transform duration-500" 
+                    width={800} 
+                    height={500}
+                />
             </div>
             <div className="col-span-6 lg:col-span-12 flex flex-col justify-center">
                 <div className="flex items-center gap-3 mb-4">

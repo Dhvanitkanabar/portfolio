@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
+import Image from "next/image";
 
 const CertificateCard = ({ title, description, date, file, category, variant = "default", thumbnail }) => {
     const isWinner = variant === "winner";
@@ -45,16 +46,20 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
                 {/* Thumbnail */}
                 <div className={`flex-shrink-0 w-28 h-28 lg:w-24 lg:h-24 sm:w-20 sm:h-20 xs:w-16 xs:h-16 rounded-2xl bg-gradient-to-br ${isWinner ? "from-primary to-primaryDark" : bg} p-1 shadow-lg group-hover:scale-105 transition-transform duration-500 overflow-hidden`}>
                     {thumbnail ? (
-                        <img
+                        <Image
                             src={thumbnail}
                             alt={title}
                             className="w-full h-full object-cover rounded-[calc(1rem-4px)]"
+                            width={120}
+                            height={120}
                         />
                     ) : file.endsWith(".png") ? (
-                        <img
+                        <Image
                             src={`/certificates/${file}`}
                             alt={title}
                             className="w-full h-full object-cover rounded-[calc(1rem-4px)]"
+                            width={120}
+                            height={120}
                         />
                     ) : (
                         <div className="w-full h-full rounded-[calc(1rem-4px)] overflow-hidden bg-white relative">

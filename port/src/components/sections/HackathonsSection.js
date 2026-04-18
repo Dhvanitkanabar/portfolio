@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
+import Image from "next/image";
 
 const HackathonCard = ({ title, award, date, location, description, tech, certificateImg, results, github, live, photos = [], leadPhoto }) => {
     const [showProjectOptions, setShowProjectOptions] = useState(false);
@@ -26,10 +27,12 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                     {leadPhoto && (
                         <div className="flex-shrink-0">
                             <div className="p-1.5 rounded-3xl bg-gradient-to-br from-primary to-primaryDark shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-500 overflow-hidden">
-                                <img 
+                                <Image 
                                     src={leadPhoto} 
                                     alt="Lead Winning Moment" 
                                     className="w-44 h-44 sm:w-32 sm:h-32 xs:w-full xs:h-40 object-cover rounded-[calc(1.5rem-6px)] border-4 border-white/10"
+                                    width={200}
+                                    height={200}
                                 />
                             </div>
                         </div>
@@ -130,10 +133,12 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                                 transition={{ delay: i * 0.12 }}
                                 style={{ borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 25px 60px rgba(0,0,0,0.6)' }}
                             >
-                                <img
+                                <Image
                                     src={photo}
                                     alt={`Winning photo ${i + 1}`}
                                     style={{ width: '100%', height: '100%', objectFit: 'cover', aspectRatio: '4/3', display: 'block' }}
+                                    width={400}
+                                    height={300}
                                 />
                             </motion.div>
                         ))}
