@@ -25,6 +25,7 @@ export default function Home() {
         <meta name="description" content="Official portfolio of Dhvanit Kanabar, a Full Stack Developer and Cybersecurity enthusiast. Showcasing projects in React.js, Next.js, and secure communication systems." />
         <meta name="keywords" content="Dhvanit Kanabar, Portfolio, Full Stack Developer, React Developer, Next.js Developer, Cybersecurity, Web Development, India" />
         <meta name="author" content="Dhvanit Kanabar" />
+        <meta name="robots" content="index, follow" />
         <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_CODE" />
         <link rel="canonical" href="https://dhvanitkanabar.vercel.app/" />
         
@@ -33,16 +34,14 @@ export default function Home() {
         <meta property="og:url" content="https://dhvanitkanabar.vercel.app/" />
         <meta property="og:title" content="Dhvanit Kanabar | Professional Portfolio" />
         <meta property="og:description" content="Explore the technical projects and achievements of Dhvanit Kanabar." />
-        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:image" content="https://dhvanitkanabar.vercel.app/og-image.png" />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://dhvanitkanabar.vercel.app/" />
         <meta property="twitter:title" content="Dhvanit Kanabar | Professional Portfolio" />
         <meta property="twitter:description" content="Explore the technical projects and achievements of Dhvanit Kanabar." />
-        <meta property="twitter:image" content="/og-image.png" />
-
-        <link rel="icon" href="/favicon-circle.png" type="image/png" />
+        <meta property="twitter:image" content="https://dhvanitkanabar.vercel.app/og-image.png" />
       </Head>
       <TransitionEffect />
       <main className="w-full min-h-screen text-dark dark:text-light">
