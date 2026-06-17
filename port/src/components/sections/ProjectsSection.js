@@ -12,8 +12,22 @@ import hackersPanelImg from "../../../public/images/projects/hackers_ui.png";
 import canteenImg from "../../../public/images/projects/canteen_ui.png";
 import emergencyImg from "../../../public/images/projects/cers_ui.png";
 import farmerImg from "../../../public/images/projects/farmer_ui.png";
+import warlensImg from "../../../public/images/projects/warlens_home.png";
 
 const projectsData = [
+    {
+        title: "WarLens: AI-Powered War Economic Impact Analysis Dashboard",
+        img: warlensImg,
+        summary: "WarLens is a production-ready MERN stack dashboard designed to analyze the economic effects of wars and conflicts using interactive visualizations, real-time statistics, and complete SEO optimization.",
+        link: "/warlens",
+        github: "https://github.com/Dhvanitkanabar/warlens",
+        frontend: "https://github.com/Dhvanitkanabar/warlens-frontend",
+        backend: "https://github.com/Dhvanitkanabar/warlens-backend",
+        postman: "https://documenter.getpostman.com/view/warlens-api",
+        type: "Full Stack",
+        category: "Full Stack",
+        featured: true
+    },
     {
         title: "CERS: Emergency Assistance",
         img: emergencyImg,

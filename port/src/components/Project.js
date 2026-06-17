@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const FramerImage = motion(Image);
 
-const Project = ({ title, type, img, link, github, summary, doc, youtube, postman, figma }) => {
+const Project = ({ title, type, img, link, github, summary, doc, youtube, postman, figma, frontend, backend }) => {
     return (
         <article className="w-full h-full flex flex-col items-start justify-center rounded-[2rem] border border-dark/10 bg-light/40 backdrop-blur-sm p-8 sm:p-6 xs:p-4 relative dark:bg-dark/40 dark:border-light/10 overflow-hidden transition-all duration-500 hover:shadow-2xl group text-left">
             <Link
@@ -56,6 +56,24 @@ const Project = ({ title, type, img, link, github, summary, doc, youtube, postma
                                 className="text-sm font-black underline underline-offset-8 decoration-2 decoration-primary/30 hover:decoration-primary transition-all duration-300 uppercase tracking-widest text-dark/80 dark:text-light/80 hover:text-dark dark:hover:text-light"
                             >
                                 Live Demo →
+                            </Link>
+                        )}
+                        {frontend && (
+                            <Link
+                                href={frontend}
+                                target="_blank"
+                                className="text-sm font-black underline underline-offset-8 decoration-2 decoration-primary/30 hover:decoration-primary transition-all duration-300 uppercase tracking-widest text-dark/80 dark:text-light/80 hover:text-dark dark:hover:text-light"
+                            >
+                                Frontend →
+                            </Link>
+                        )}
+                        {backend && (
+                            <Link
+                                href={backend}
+                                target="_blank"
+                                className="text-sm font-black underline underline-offset-8 decoration-2 decoration-primary/30 hover:decoration-primary transition-all duration-300 uppercase tracking-widest text-dark/80 dark:text-light/80 hover:text-dark dark:hover:text-light"
+                            >
+                                Backend →
                             </Link>
                         )}
                         {doc && (

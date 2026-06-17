@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const FramerImage = motion(Image);
 
-const FeaturedProject = ({ type, title, summary, img, link, github, doc, youtube, postman, figma }) => {
+const FeaturedProject = ({ type, title, summary, img, link, github, doc, youtube, postman, figma, frontend, backend }) => {
     return (
         <article className="w-full relative rounded-[2.5rem] border border-dark/10 bg-light/60 backdrop-blur-md dark:bg-dark/60 dark:border-light/10 p-12 lg:p-8 sm:p-6 xs:p-4 overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] group text-left">
             {/* Animated backgrounds */}
@@ -60,6 +60,24 @@ const FeaturedProject = ({ type, title, summary, img, link, github, doc, youtube
                                 className="rounded-xl bg-dark text-light py-2.5 px-6 sm:px-4 sm:py-2 text-base sm:text-xs font-black dark:bg-light dark:text-dark hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl shadow-dark/10 dark:shadow-light/5 whitespace-nowrap"
                             >
                                 Live Demo
+                            </Link>
+                        )}
+                        {frontend && (
+                            <Link
+                                href={frontend}
+                                target="_blank"
+                                className="rounded-xl bg-primary/10 text-primary py-2.5 px-5 sm:px-3 sm:py-2 text-base sm:text-xs font-black border border-primary/20 dark:bg-primaryDark/10 dark:text-primaryDark dark:border-primaryDark/20 hover:bg-primary hover:text-light dark:hover:bg-primaryDark dark:hover:text-dark transition-all duration-300 whitespace-nowrap"
+                            >
+                                Frontend
+                            </Link>
+                        )}
+                        {backend && (
+                            <Link
+                                href={backend}
+                                target="_blank"
+                                className="rounded-xl bg-primary/10 text-primary py-2.5 px-5 sm:px-3 sm:py-2 text-base sm:text-xs font-black border border-primary/20 dark:bg-primaryDark/10 dark:text-primaryDark dark:border-primaryDark/20 hover:bg-primary hover:text-light dark:hover:bg-primaryDark dark:hover:text-dark transition-all duration-300 whitespace-nowrap"
+                            >
+                                Backend
                             </Link>
                         )}
                         {doc && (
