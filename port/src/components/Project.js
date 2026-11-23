@@ -4,10 +4,9 @@ import Image from "next/image";
 import { GithubIcon, YouTubeIcon, PostmanIcon, FigmaIcon } from "./Icons";
 import { motion } from "framer-motion";
 
-
 const FramerImage = motion(Image);
 
-const Project = ({ title, type, img, link, github, summary, doc, youtube, postman, figma, frontend, backend }) => {
+const Project = ({ title, type, img, link, github, summary, youtube, postman, figma, frontend, backend, tech }) => {
     return (
         <article className="w-full h-full flex flex-col items-start justify-center rounded-[2rem] border border-dark/10 bg-light/40 backdrop-blur-sm p-8 sm:p-6 xs:p-4 relative dark:bg-dark/40 dark:border-light/10 overflow-hidden transition-all duration-500 hover:shadow-2xl group text-left">
             <Link
@@ -18,7 +17,7 @@ const Project = ({ title, type, img, link, github, summary, doc, youtube, postma
                 <FramerImage
                     src={img}
                     alt={title}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-56 sm:h-44 object-cover"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6, ease: "circOut" }}
                     width={500}
@@ -36,15 +35,29 @@ const Project = ({ title, type, img, link, github, summary, doc, youtube, postma
                     target="_blank"
                     className="hover:text-primary dark:hover:text-primaryDark transition-colors duration-300"
                 >
-                    <h2 className="w-full text-left text-2xl font-black dark:text-light mb-4 leading-tight">
+                    <h2 className="w-full text-left text-2xl sm:text-xl font-black dark:text-light mb-3 leading-tight">
                         {title}
                     </h2>
                 </Link>
 
                 {summary && (
-                    <p className="font-medium text-dark/70 dark:text-light/70 text-sm leading-relaxed mb-6">
+                    <p className="font-medium text-dark/70 dark:text-light/70 text-sm leading-relaxed mb-4">
                         {summary}
                     </p>
+                )}
+
+                {/* Tech Pills */}
+                {tech && tech.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                        {tech.slice(0, 5).map((t) => (
+                            <span
+                                key={t}
+                                className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 text-dark/60 dark:text-light/60"
+                            >
+                                {t}
+                            </span>
+                        ))}
+                    </div>
                 )}
 
                 <div className="w-full flex items-center justify-between flex-wrap gap-3 mt-auto pt-4 border-t border-dark/5 dark:border-light/5">
@@ -74,15 +87,6 @@ const Project = ({ title, type, img, link, github, summary, doc, youtube, postma
                                 className="text-sm font-black underline underline-offset-8 decoration-2 decoration-primary/30 hover:decoration-primary transition-all duration-300 uppercase tracking-widest text-dark/80 dark:text-light/80 hover:text-dark dark:hover:text-light"
                             >
                                 Backend →
-                            </Link>
-                        )}
-                        {doc && (
-                            <Link
-                                href={doc}
-                                target="_blank"
-                                className="text-[10px] font-black underline underline-offset-4 decoration-1 decoration-dark/10 hover:decoration-primary transition-all duration-300 uppercase tracking-widest text-dark/40 hover:text-primary dark:text-light/40 dark:hover:text-primaryDark"
-                            >
-                                Docs
                             </Link>
                         )}
                     </div>

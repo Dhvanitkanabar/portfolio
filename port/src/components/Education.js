@@ -58,7 +58,7 @@ const Education = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
-                Education
+                Education & Experience
             </motion.h2>
 
             <div ref={ref} className="w-[75%] mx-auto relative lg:w-[90%] md:w-full">
@@ -71,17 +71,24 @@ const Education = () => {
                 <ul className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2">
                     <Details
                         index={0}
-                        type="Bachelor Of Technology In Computer Science"
+                        type="B.Tech in Computer Engineering"
                         time="2025–2029"
                         place="Swaminarayan University"
-                        info="Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial Intelligence."
+                        info="Academic Excellence: Semester 1 SGPA: 10.00/10.00 | Semester 2 SGPA: 9.33/10.00. Focus areas include Data Structures and Algorithms, Object-Oriented Programming, Database Management Systems, Computer Networks, and Artificial Intelligence."
                     />
                     <Details
                         index={1}
+                        type="Student Builder Campus Leader"
+                        time="July–August 2026"
+                        place="AWS Student Builder Community"
+                        info="Contributed to student developer engagement and awareness of the AWS Builder ecosystem. Supported student onboarding, AWS Builder ID registrations, and participation in developer-focused initiatives."
+                    />
+                    <Details
+                        index={2}
                         type="Higher Secondary Education"
                         time="2016 – 2025"
                         place="PP Savani CVS"
-                        info="Completed higher secondary education with a focus on science and mathematics."
+                        info="Completed higher secondary education with a rigorous foundation in Mathematics, Physics, and Computer Science fundamentals."
                     />
                 </ul>
             </div>

@@ -89,19 +89,13 @@ const AboutSection = () => {
                             variants={fadeUp}
                         >
                             Hi, I&apos;m <span className="text-primary dark:text-primaryDark font-bold">Dhvanit Kanabar</span>,
-                            a dedicated frontend developer with a passion for creating beautiful, functional, and user-centered digital
-                            experiences. I am always looking for new and innovative ways to bring my visions to life.
+                            a Computer Engineering student and developer focused on building practical software applications across web, backend, and mobile platforms. I enjoy working with APIs, databases, authentication systems, application architecture, and AI-powered integrations.
                         </motion.p>
                         <motion.p className="my-6 font-medium text-lg leading-relaxed text-left" variants={fadeUp}>
-                            I believe that design is about more than just making things look
-                            pretty – it&apos;s about solving problems and creating intuitive,
-                            enjoyable experiences for users.
+                            Through hands-on projects, I have explored building complete applications from frontend interfaces to backend services and mobile experiences. I am continuously improving my engineering skills and looking for opportunities to contribute to real-world software development teams.
                         </motion.p>
                         <motion.p className="font-medium text-lg leading-relaxed text-left" variants={fadeUp}>
-                            Whether I&apos;m working on a website, mobile app, or other digital
-                            product, I bring my commitment to design excellence and
-                            user-centered thinking to every project I work on. I specialize in building
-                            responsive, high-performance interfaces that make a lasting impression.
+                            Whether developing responsive React web interfaces, architecting RESTful services in Node.js & Express, modeling schemas in MongoDB and Firebase, or building cross-platform mobile apps with React Native & Expo, I prioritize clean code, robust application security, and tangible user value.
                         </motion.p>
                     </motion.div>
 
@@ -150,7 +144,7 @@ const AboutSection = () => {
                                 B.Tech
                             </span>
                             <h2 className="text-xl font-medium capitalize text-dark/75 dark:text-light/75 xl:text-center md:text-lg sm:text-base xs:text-sm">
-                                Student (2025-2029)
+                                Computer Engineering (2025-2029)
                             </h2>
                         </motion.div>
                     </motion.div>

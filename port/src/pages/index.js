@@ -8,9 +8,9 @@ import dynamic from "next/dynamic";
 // Modular Sections (Lazy Loaded)
 const HomeSection = dynamic(() => import("@/components/sections/HomeSection"), { ssr: true });
 const AboutSection = dynamic(() => import("@/components/sections/AboutSection"));
-const Skills = dynamic(() => import("@/components/Skills"));
+const Skills = dynamic(() => import("@/components/Skills"), { ssr: true });
 const HackathonsSection = dynamic(() => import("@/components/sections/HackathonsSection"));
-const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"));
+const ProjectsSection = dynamic(() => import("@/components/sections/ProjectsSection"), { ssr: true });
 const FigmaDesignsSection = dynamic(() => import("@/components/sections/FigmaDesignsSection"));
 const CertificatesSection = dynamic(() => import("@/components/sections/CertificatesSection"));
 const AchievementsSection = dynamic(() => import("@/components/sections/AchievementsSection"));
@@ -21,9 +21,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Dhvanit Kanabar | Full Stack Developer & Cybersecurity Enthusiast</title>
-        <meta name="description" content="Official portfolio of Dhvanit Kanabar, a Full Stack Developer and Cybersecurity enthusiast. Showcasing projects in React.js, Next.js, and secure communication systems." />
-        <meta name="keywords" content="Dhvanit Kanabar, Portfolio, Full Stack Developer, React Developer, Next.js Developer, Cybersecurity, Web Development, India" />
+        <title>Dhvanit Kanabar | Full Stack Developer | Backend & Mobile App Development</title>
+        <meta name="description" content="Official portfolio of Dhvanit Kanabar: Full Stack Developer, Backend & Mobile App Developer, Computer Engineering Student. Specializing in Node.js, Express, MongoDB, React, React Native, and AI integrations." />
+        <meta name="keywords" content="Dhvanit Kanabar, Full Stack Developer Intern, Backend Developer Intern, React Developer Intern, React Native Developer Intern, Software Engineer Intern, Node.js Developer Intern, MongoDB, Express, React Native, AI Application Developer" />
         <meta name="author" content="Dhvanit Kanabar" />
         <meta name="robots" content="index, follow" />
         <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_CODE" />
@@ -48,9 +48,11 @@ export default function Home() {
         <div data-content="true">
           <HomeSection />
           <AboutSection />
-          <Skills />
+          <section id="skills" className="w-full">
+            <Skills />
+          </section>
+          <HackathonsSection />
           <section id="projects" className="w-full">
-            <HackathonsSection />
             <ProjectsSection />
           </section>
           <FigmaDesignsSection />

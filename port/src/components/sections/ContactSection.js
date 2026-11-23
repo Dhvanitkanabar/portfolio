@@ -39,14 +39,14 @@ const LeetCodeIcon = () => (
 );
 
 const contactInfo = [
-    { icon: "📧", label: "Email", value: "dhvanitkanabar.cg@gmail.com", href: "mailto:dhvanitkanabar.cg@gmail.com" },
+    { icon: "📧", label: "Email", value: "dhvanitkanabar@gmail.com", href: "mailto:dhvanitkanabar@gmail.com" },
     { icon: "📍", label: "Location", value: "Kalol, Gujarat, India", href: "#" },
     { icon: "🕒", label: "Response", value: "Within 24 hours", href: "#" },
 ];
 
 const socialLinks = [
-    { icon: <LinkedInIcon />, label: "LinkedIn", href: "https://www.linkedin.com/in/dhvanit-kanabar/", color: "#0077B5" },
-    { icon: <GithubSVG />, label: "GitHub", href: "https://github.com/Dhvanitkanabar", color: "#6e5494" },
+    { icon: <LinkedInIcon />, label: "LinkedIn", href: "https://www.linkedin.com/in/dhvanit-kanabar", color: "#0077B5" },
+    { icon: <GithubSVG />, label: "GitHub", href: "https://github.com/DhvanitKanabar", color: "#6e5494" },
     { icon: <TwitterIcon />, label: "Twitter", href: "https://x.com/Dhvanit_1207", color: "#1DA1F2" },
     { icon: <YouTubeIcon />, label: "YouTube", href: "https://www.youtube.com/@Dhvanit_1207", color: "#FF0000" },
     { icon: <LeetCodeIcon />, label: "LeetCode", href: "https://leetcode.com/u/zrbt3DJG94/", color: "#FFA116" },
@@ -71,7 +71,7 @@ const ContactSection = () => {
     const [copied, setCopied] = useState(false);
 
     const copyEmail = () => {
-        navigator.clipboard.writeText("dhvanitkanabar.cg@gmail.com");
+        navigator.clipboard.writeText("dhvanitkanabar@gmail.com");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -327,7 +327,7 @@ const ContactSection = () => {
                                     onClick={copyEmail}
                                     className="text-xs font-medium text-dark/40 dark:text-light/40 hover:text-primary dark:hover:text-primaryDark transition-colors"
                                 >
-                                    {copied ? "✅ Email Copied!" : "or copy: dhvanitkanabar.cg@gmail.com"}
+                                    {copied ? "✅ Email Copied!" : "or copy: dhvanitkanabar@gmail.com"}
                                 </button>
                             </div>
                         </form>

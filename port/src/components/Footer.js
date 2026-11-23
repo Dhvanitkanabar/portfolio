@@ -14,7 +14,7 @@ const Footer = () => {
                     Build With <span className="text-primary dark:text-primaryDark text-2xl px-1">&#9825;</span>
                     by&nbsp;
                     <Link
-                        href="https://github.com/Dhvanitkanabar"
+                        href="https://github.com/DhvanitKanabar"
                         className="underline underline-offset-2"
                         target={"_blank"}
                     >
@@ -22,7 +22,7 @@ const Footer = () => {
                     </Link>
                 </div>
                 <Link
-                    href="mailto:dhvanitkanabar.cg@gmail.com"
+                    href="mailto:dhvanitkanabar@gmail.com"
                     target={"_blank"}
                     className="underline underline-offset-2"
                 >

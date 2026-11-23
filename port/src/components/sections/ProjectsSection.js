@@ -9,117 +9,99 @@ import Project from "@/components/Project";
 import secureCommImg from "../../../public/images/projects/secure_ui.png";
 import auraImg from "../../../public/images/projects/aura_ui.png";
 import hackersPanelImg from "../../../public/images/projects/hackers_ui.png";
-import canteenImg from "../../../public/images/projects/canteen_ui.png";
 import emergencyImg from "../../../public/images/projects/cers_ui.png";
 import farmerImg from "../../../public/images/projects/farmer_ui.png";
 import warlensImg from "../../../public/images/projects/warlens_home.png";
+import fashionStudioImg from "../../../public/images/projects/fashion-studio-website.jpg";
 
 const projectsData = [
     {
-        title: "WarLens: AI-Powered War Economic Impact Analysis Dashboard",
+        title: "FasalRakshak: AI-Powered Agricultural & Mobile Platform",
+        img: farmerImg,
+        summary: "FasalRakshak is an AI-powered agricultural platform designed to help farmers detect crop diseases, understand soil health, and make informed farming decisions. It combines a responsive web application built with React and Vite, backend REST services with Node.js and Express, MongoDB database integration, MobileNet & TensorFlow.js computer vision for leaf disease diagnosis, Gemini AI advisory, weather intelligence, and a dedicated React Native / Expo mobile application. The web frontend has been optimized and deployed using GitHub-integrated Cloudflare Pages with environment-based production API configuration.",
+        link: "https://fasalrakshak1.pages.dev/",
+        github: "https://github.com/Dhvanitkanabar/Repo-Reboot",
+        type: "Full Stack | AI | Mobile Application | Cloud Deployment",
+        category: "Full Stack",
+        tech: ["React", "Vite", "JavaScript", "Node.js", "Express.js", "MongoDB", "React Native", "Expo", "FastAPI", "Gemini API", "TensorFlow.js", "Computer Vision", "Cloudflare Pages", "GitHub"],
+        featured: true
+    },
+    {
+        title: "Sakshi Clothing: Full-Stack E-Commerce Platform",
+        img: fashionStudioImg,
+        summary: "Designed and developed a production-grade full-stack e-commerce clothing platform featuring customer shopping experience and separate administration systems. Implements dynamic product categories, size/variant management, cart & wishlist workflows, customer authentication, inventory controls, order tracking, and deployment across Vercel and Render.",
+        link: "https://fasalrakshak1.pages.dev/",
+        github: "https://github.com/DhvanitKanabar",
+        type: "Full Stack E-Commerce Platform",
+        category: "Full Stack",
+        tech: ["React", "JavaScript", "Node.js", "Express.js", "MongoDB", "Mongoose", "Tailwind CSS", "Clerk", "Razorpay", "Cloudinary", "Vercel", "Render"],
+        featured: true
+    },
+    {
+        title: "CERS+: Centralized Emergency Response System",
+        img: emergencyImg,
+        summary: "An emergency response coordination platform designed to improve mission-critical service coordination through AI-assisted workflows, real-time GPS tracking, ambulance ETA calculation, and multi-department dispatch for hospitals, police, and fire rescue. Built with Next.js, Firebase services, and Gemini AI capabilities with mapping and location intelligence.",
+        link: "https://cers-4.onrender.com/",
+        github: "https://github.com/Dhvanitkanabar/CERS",
+        type: "Full Stack | AI | Emergency Technology",
+        category: "Full Stack",
+        tech: ["Next.js", "Firebase", "Gemini API", "Real-Time GPS", "Google Maps API", "REST APIs"],
+        featured: true
+    },
+    {
+        title: "SecureComm: Real-Time Encrypted Safety Engine",
+        img: secureCommImg,
+        summary: "A security-focused real-time communication project exploring secure data exchange, cryptography, and network security concepts. Built with React, WebSockets, JavaScript, and cryptographic modules to simulate and demonstrate secure data transmission, visual trust validation, packet interception, and man-in-the-middle (MITM) attack mitigations.",
+        link: "https://secure-comm-jade.vercel.app/",
+        github: "https://github.com/Dhvanitkanabar/secure-comm",
+        type: "Backend | Cybersecurity | Real-Time Communication",
+        category: "Full Stack",
+        tech: ["React", "WebSockets", "JavaScript", "Cryptography", "Network Security", "Tailwind CSS"],
+        featured: true
+    },
+    {
+        title: "WarLens: AI-Powered Conflict Economic Impact Dashboard",
         img: warlensImg,
-        summary: "WarLens is a production-ready MERN stack dashboard designed to analyze the economic effects of wars and conflicts using interactive visualizations, real-time statistics, and complete SEO optimization.",
+        summary: "A production-ready MERN stack dashboard designed to analyze the economic effects of geopolitical conflicts using interactive data visualizations, real-time statistics, RESTful APIs, and full SEO optimization.",
         link: "/warlens",
         github: "https://github.com/Dhvanitkanabar/warlens",
         frontend: "https://github.com/Dhvanitkanabar/warlens-frontend",
         backend: "https://github.com/Dhvanitkanabar/warlens-backend",
         postman: "https://documenter.getpostman.com/view/warlens-api",
-        type: "Full Stack",
+        type: "Full Stack | MERN Analytics",
         category: "Full Stack",
-        featured: true
-    },
-    {
-        title: "CERS: Emergency Assistance",
-        img: emergencyImg,
-        summary: "Advanced emergency response platform for coordinating mission-critical services. Features real-time tracking, resource optimization, and rapid dispatch capabilities.",
-        link: "https://cers-4.onrender.com/",
-        github: "https://github.com/Dhvanitkanabar/CERS",
-        doc: "https://docs.google.com/document/d/1ZMIPI1vuPb1laCNX_uYqanPsItKipX76VkuRj-9-q1g/edit?usp=sharing",
-        type: "Safety Tech",
-        category: "Full Stack",
-        featured: true
-    },
-    {
-        title: "Aura: Messaging App",
-        img: auraImg,
-        summary: "Full-featured real-time messaging application with private and group chat capabilities.",
-        link: "https://aura-eight-phi.vercel.app/",
-        github: "https://github.com/Dhvanitkanabar/aura",
-        doc: "https://docs.google.com/document/d/1xm8IixdQh3K6T--7PZ8XxWUHxqnXDjlByQzAC5cndDE/edit?usp=sharing",
-        type: "Communication Platform",
-        category: "Full Stack",
+        tech: ["MongoDB", "Express.js", "React", "Node.js", "Recharts", "REST APIs"],
         featured: false
     },
     {
-        title: "HackersPanel: Security Deck",
+        title: "HackersPanel: Security Vulnerability Deck",
         img: hackersPanelImg,
-        summary: "A comprehensive security dashboard for monitoring vulnerabilities and system health.",
+        summary: "A comprehensive cybersecurity dashboard for monitoring web application vulnerabilities, inspecting threat vectors, and assessing system health indicators.",
         link: "https://hackerspanel.netlify.app",
         github: "https://github.com/Dhvanitkanabar/cybersecurity",
-        doc: "https://docs.google.com/document/d/1oft4l63s8F0pPbYAMn-CjJBqldIN1y5pZeZEOmN6HWs/edit?usp=sharing",
-        type: "Cybersecurity",
+        type: "Cybersecurity & Monitoring",
         category: "Frontend",
+        tech: ["React", "Tailwind CSS", "Security Metrics", "Vulnerability Scanner"],
         featured: false
     },
     {
-        title: "Secure Comm: Safety Engine",
-        img: secureCommImg,
-        summary: "🏆 Runner-Up at ElectroSphere 2K26 Hackathon. High-performance safety engine for secure communications featuring real-time encryption, anomaly detection, and a robust cybersecurity infrastructure.",
-        link: "https://secure-comm-jade.vercel.app/",
-        github: "https://github.com/Dhvanitkanabar/secure-comm",
-        doc: "https://docs.google.com/document/d/14w5J8z8yWtA1nhtLJcgO1WeD4-1gjuoi9U80Xi3weC8/edit?tab=t.0#heading=h.aogq9mc2ptoo",
-        type: "Security Tech",
-        category: "Full Stack",
-        featured: true
-    },
-    {
-        title: "Canteen Food Order",
-        img: canteenImg,
-        summary: "A streamlined e-commerce solution for university canteens. Features a specialized shopping cart overlay and status tracking bar for a seamless campus dining experience.",
-        link: "#",
-        github: "https://github.com/Dhvanitkanabar/canteen-prj",
-        doc: "https://docs.google.com/document/d/1ChdA0fY8mtZZ_b0CPxkziRfA2OSUM0XFBMC-Zglod7c/edit?usp=sharing",
-        type: "E-commerce",
-        category: "Full Stack",
-        featured: true
-    },
-    {
-        title: "Farmer Marketplace",
-        img: farmerImg,
-        summary: "A marketplace platform enabling farmers to sell products directly to consumers without intermediaries, reducing waste and increasing profits.",
-        link: "https://meek-daffodil-fcaf7d.netlify.app/",
-        github: "https://github.com/Dhvanitkanabar/Repo-Reboot",
-        doc: "https://docs.google.com/document/d/1v5nz990GmQ8VOdxc87K505CUlFhBHgfRigldoFc8zto/edit?usp=sharing",
-        type: "AgriTech",
-        category: "Full Stack",
-        featured: true
-    },
-    {
-        title: "Cyber Snake: Retro Fusion",
-        img: secureCommImg,
-        summary: "A modern reimagining of the classic snake game with cybersecurity-themed powerups and neon aesthetics.",
-        link: "https://github.com/Dhvanitkanabar/snake-game",
-        github: "https://github.com/Dhvanitkanabar/snake-game",
-        type: "Game Dev",
-        category: "Games",
-        featured: false
-    },
-    {
-        title: "Netflix Ecosystem Clone",
+        title: "Aura: Real-Time Messaging Platform",
         img: auraImg,
-        summary: "A pixel-perfect clone of the Netflix landing and browsing experience, featuring dynamic content fetching and high-performance UI components.",
-        link: "https://github.com/Dhvanitkanabar/netflix-clone",
-        github: "https://github.com/Dhvanitkanabar/netflix-clone",
-        type: "UI/UX Replication",
-        category: "Clones",
+        summary: "Full-featured real-time messaging application with private and group chat capabilities, responsive state management, and modern UI design.",
+        link: "https://aura-eight-phi.vercel.app/",
+        github: "https://github.com/Dhvanitkanabar/aura",
+        type: "Real-Time Communication",
+        category: "Full Stack",
+        tech: ["React", "WebSockets", "Node.js", "Express.js", "Tailwind CSS"],
         featured: false
     }
 ];
 
-const categories = ["All", "Full Stack", "Frontend", "Games", "Clones"];
+const categories = ["All", "Full Stack", "Frontend"];
 
 const ProjectsSection = () => {
     const [activeCategory, setActiveCategory] = useState("All");
+    const [viewMode, setViewMode] = useState("featured"); // "featured" | "grid"
 
     const filteredProjects = useMemo(() => {
         if (activeCategory === "All") return projectsData;
@@ -154,20 +136,50 @@ const ProjectsSection = () => {
                     className="mb-16 xl:!text-7xl lg:!text-6xl md:!text-5xl sm:!text-4xl xs:!text-3xl sm:mb-8"
                 />
 
-                {/* Filter Tabs */}
-                <div className="flex flex-wrap items-center justify-center gap-4 mb-16 sm:mb-10">
-                    {categories.map((cat) => (
-                        <button
-                            key={cat}
-                            onClick={() => setActiveCategory(cat)}
-                            className={`px-6 py-2 rounded-full text-sm font-bold transition-all duration-300 border-2 ${activeCategory === cat
-                                    ? "bg-dark text-light border-dark dark:bg-light dark:text-dark dark:border-light scale-105"
-                                    : "bg-transparent text-dark/60 border-dark/10 hover:border-dark/30 dark:text-light/60 dark:border-light/10 dark:hover:border-light/30"
+                {/* Filter and View Mode Controls */}
+                <div className="flex flex-wrap items-center justify-between gap-6 mb-16 sm:mb-10 px-2">
+                    {/* Category Tabs */}
+                    <div className="flex flex-wrap items-center gap-3">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveCategory(cat)}
+                                className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 border-2 ${
+                                    activeCategory === cat
+                                        ? "bg-dark text-light border-dark dark:bg-light dark:text-dark dark:border-light scale-105"
+                                        : "bg-transparent text-dark/60 border-dark/10 hover:border-dark/30 dark:text-light/60 dark:border-light/10 dark:hover:border-light/30"
                                 }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Layout View Mode Toggle */}
+                    <div className="inline-flex items-center p-1 rounded-2xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10">
+                        <button
+                            onClick={() => setViewMode("featured")}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
+                                viewMode === "featured"
+                                    ? "bg-light dark:bg-dark text-primary dark:text-primaryDark shadow-md"
+                                    : "text-dark/50 dark:text-light/50 hover:text-dark dark:hover:text-light"
+                            }`}
                         >
-                            {cat}
+                            <span>⚡</span>
+                            <span>Editorial</span>
                         </button>
-                    ))}
+                        <button
+                            onClick={() => setViewMode("grid")}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
+                                viewMode === "grid"
+                                    ? "bg-light dark:bg-dark text-primary dark:text-primaryDark shadow-md"
+                                    : "text-dark/50 dark:text-light/50 hover:text-dark dark:hover:text-light"
+                            }`}
+                        >
+                            <span>▦</span>
+                            <span>Grid Cards</span>
+                        </button>
+                    </div>
                 </div>
 
                 <motion.div
@@ -175,23 +187,29 @@ const ProjectsSection = () => {
                     layout
                 >
                     <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((project, index) => (
-                            <motion.div
-                                key={project.title}
-                                layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.4 }}
-                                className={project.featured ? "col-span-12" : "col-span-6 sm:col-span-12"}
-                            >
-                                {project.featured ? (
-                                    <FeaturedProject {...project} />
-                                ) : (
-                                    <Project {...project} />
-                                )}
-                            </motion.div>
-                        ))}
+                        {filteredProjects.map((project, index) => {
+                            const isFeaturedLayout = viewMode === "featured" && project.featured;
+                            return (
+                                <motion.div
+                                    key={project.title}
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    transition={{ duration: 0.4 }}
+                                    className={isFeaturedLayout ? "col-span-12" : "col-span-6 md:col-span-12"}
+                                >
+                                    {isFeaturedLayout ? (
+                                        <FeaturedProject
+                                            {...project}
+                                            reverse={index % 2 !== 0}
+                                        />
+                                    ) : (
+                                        <Project {...project} />
+                                    )}
+                                </motion.div>
+                            );
+                        })}
                     </AnimatePresence>
                 </motion.div>
             </Layout>

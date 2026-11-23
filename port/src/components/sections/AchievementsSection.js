@@ -28,32 +28,39 @@ const AchievementCard = ({ title, award, date, source, description }) => {
 const AchievementsSection = () => {
     const achievements = [
         {
+            title: "Dewang Mehta IT Awards 2026",
+            award: "Recognized Recipient",
+            date: "2026",
+            source: "State IT Excellence",
+            description: "Recognized at the prestigious Dewang Mehta IT Awards for innovation and excellence in technology."
+        },
+        {
             title: "ElectroSphere 2K26 Hackathon",
-            award: "Runner-Up (2nd Place)",
+            award: "Second Place (Runner-Up)",
             date: "Jan 2026",
-            source: "Technical Competition",
-            description: "Secured 2nd place among 50+ teams for developing a secure communication simulator using React and Firebase."
+            source: "Hackathon Competition",
+            description: "Secured 2nd place among 50+ competitive engineering teams for developing SecureComm, a real-time secure communication and network security demonstration."
         },
         {
             title: "Tech Expo 2026",
-            award: "1st Runner-Up",
+            award: "Runner-Up (1st Runner-Up)",
             date: "Feb 2026",
             source: "Project Exhibition",
-            description: "Awarded for outstanding innovation in the 'Safety Tech' category with CERS+ (Emergency Response System)."
+            description: "Awarded for outstanding innovation in the 'Safety Tech' category with CERS+ (Centralized Emergency Response System) at Parul University."
         },
         {
-            title: "Quasar Tech Fest",
-            award: "Winner (1st Place)",
+            title: "AWS Student Builder Campus Leadership",
+            award: "Campus Leader Recognition",
             date: "2026",
-            source: "Coding Competition",
-            description: "First place in the flagship competitive programming event of the university."
+            source: "Developer Leadership",
+            description: "Selected as Student Builder Campus Leader for driving student awareness, Builder ID onboarding, and cloud developer initiatives."
         },
         {
-            title: "Chaitanya CTF",
-            award: "Runner-up",
-            date: "2026",
-            source: "Cybersecurity",
-            description: "Ranked among the top participants in an intensive Capture The Flag cybersecurity competition."
+            title: "Academic Honors & SGPA Distinction",
+            award: "Sem 1: 10.00/10.00 | Sem 2: 9.33/10.00",
+            date: "2025–2026",
+            source: "Swaminarayan University",
+            description: "Demonstrated academic excellence in Computer Engineering coursework including Data Structures, Algorithms, and Software Engineering."
         }
     ];
 
@@ -63,7 +70,7 @@ const AchievementsSection = () => {
                 <div className="text-center mb-16">
                     <AnimatedText text="Elite Achievements" className="!text-6xl sm:!text-4xl" />
                     <p className="text-lg font-medium text-dark/60 dark:text-light/60 mt-4">
-                        Recognitions and awards received for technical excellence and innovation.
+                        Recognitions and awards received for technical excellence, innovation, and academic performance.
                     </p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-1 gap-8">
