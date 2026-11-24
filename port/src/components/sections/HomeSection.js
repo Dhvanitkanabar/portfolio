@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { LinkArrow, GithubIcon, LinkedInIcon } from "@/components/Icons";
 import { useNavTransition } from "@/components/hooks/useNavTransition";
+import MagneticButton from "@/components/MagneticButton";
 
 /**
  * =========================================================================
@@ -196,17 +197,46 @@ const HomeSection = () => {
                             </span>
                         </motion.div>
 
-                        {/* 2. Specific, Confident Headline */}
-                        <motion.h1
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ ...transitionConfig, delay: 0.1 }}
-                            className="text-[clamp(2.1rem,4.2vw,3.5rem)] font-extrabold tracking-tight text-dark dark:text-light leading-[1.12] mb-3 max-w-2xl"
-                        >
-                            Full-stack developer building{" "}
-                            <span className="text-primary dark:text-primaryDark">AI-powered products</span>{" "}
-                            that solve real problems.
-                        </motion.h1>
+                        {/* 2. Specific, Confident Headline with Split-Text Word Mask Reveal */}
+                        <h1 className="text-[clamp(2.1rem,4.2vw,3.5rem)] font-extrabold tracking-tight text-dark dark:text-light leading-[1.12] mb-3 max-w-2xl">
+                            {/* Screen-reader full text */}
+                            <span className="sr-only">
+                                {HERO_DATA.headline}
+                            </span>
+                            {/* Visual masked word reveal */}
+                            <span aria-hidden="true" className="inline-block">
+                                {[
+                                    { text: "Full-stack", highlight: false },
+                                    { text: "developer", highlight: false },
+                                    { text: "building", highlight: false },
+                                    { text: "AI-powered", highlight: true },
+                                    { text: "products", highlight: true },
+                                    { text: "that", highlight: false },
+                                    { text: "solve", highlight: false },
+                                    { text: "real", highlight: false },
+                                    { text: "problems.", highlight: false },
+                                ].map((item, idx) => (
+                                    <span key={idx} className="inline-block overflow-hidden mr-[0.24em] align-top">
+                                        <motion.span
+                                            className={`inline-block ${
+                                                item.highlight
+                                                    ? "text-primary dark:text-primaryDark"
+                                                    : "text-dark dark:text-light"
+                                            }`}
+                                            initial={{ y: "115%", opacity: 0 }}
+                                            animate={{ y: "0%", opacity: 1 }}
+                                            transition={{
+                                                duration: 0.65,
+                                                delay: prefersReducedMotion ? 0 : 0.08 + idx * 0.04,
+                                                ease: [0.16, 1, 0.3, 1],
+                                            }}
+                                        >
+                                            {item.text}
+                                        </motion.span>
+                                    </span>
+                                ))}
+                            </span>
+                        </h1>
 
                         {/* 3. Rotating Subtitle: Truthful Roles */}
                         <motion.div
@@ -228,7 +258,7 @@ const HomeSection = () => {
                             {HERO_DATA.intro}
                         </motion.p>
 
-                        {/* 5. Dual CTAs + Social Presence Row */}
+                        {/* 5. Dual CTAs + Social Presence Row with Magnetic Attraction */}
                         <motion.div
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -236,54 +266,64 @@ const HomeSection = () => {
                             className="flex flex-wrap items-center gap-3.5 mb-6 w-full"
                         >
                             {/* Primary CTA: View Projects */}
-                            <a
-                                href={HERO_DATA.ctas.primary.href}
-                                onClick={handleNavClick}
-                                className="px-6 py-3 rounded-xl bg-dark text-light dark:bg-light dark:text-dark text-sm font-bold shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2 group"
-                            >
-                                <span>{HERO_DATA.ctas.primary.label}</span>
-                                <span className="group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
-                            </a>
+                            <MagneticButton strength={0.3}>
+                                <a
+                                    href={HERO_DATA.ctas.primary.href}
+                                    onClick={handleNavClick}
+                                    className="px-6 py-3 rounded-xl bg-dark text-light dark:bg-light dark:text-dark text-sm font-bold shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2 group"
+                                >
+                                    <span>{HERO_DATA.ctas.primary.label}</span>
+                                    <span className="group-hover:translate-y-0.5 transition-transform duration-200">↓</span>
+                                </a>
+                            </MagneticButton>
 
                             {/* Secondary CTA: Download Resume */}
-                            <a
-                                href={HERO_DATA.ctas.secondary.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                download="Dhvanit_Kanabar_Resume.pdf"
-                                className="px-5 py-3 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/15 dark:border-light/15 hover:border-primary dark:hover:border-primaryDark text-dark dark:text-light text-sm font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2"
-                            >
-                                <span>{HERO_DATA.ctas.secondary.label}</span>
-                                <LinkArrow className="w-4 h-4" />
-                            </a>
+                            <MagneticButton strength={0.3}>
+                                <a
+                                    href={HERO_DATA.ctas.secondary.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    download="Dhvanit_Kanabar_Resume.pdf"
+                                    className="px-5 py-3 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/15 dark:border-light/15 hover:border-primary dark:hover:border-primaryDark text-dark dark:text-light text-sm font-bold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center gap-2"
+                                >
+                                    <span>{HERO_DATA.ctas.secondary.label}</span>
+                                    <LinkArrow className="w-4 h-4" />
+                                </a>
+                            </MagneticButton>
 
                             {/* Social / Email Quick Links */}
                             <div className="flex items-center gap-2 ml-1 sm:ml-0">
-                                <a
-                                    href={HERO_DATA.socialLinks.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="GitHub Profile"
-                                    className="w-10 h-10 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 flex items-center justify-center text-dark/70 dark:text-light/70 hover:text-dark dark:hover:text-light hover:border-dark/30 dark:hover:border-light/30 transition-all duration-200"
-                                >
-                                    <GithubIcon className="w-4 h-4" />
-                                </a>
-                                <a
-                                    href={HERO_DATA.socialLinks.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="LinkedIn Profile"
-                                    className="w-10 h-10 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 flex items-center justify-center text-dark/70 dark:text-light/70 hover:text-[#0077B5] hover:border-[#0077B5]/40 transition-all duration-200"
-                                >
-                                    <LinkedInIcon className="w-4 h-4" />
-                                </a>
-                                <a
-                                    href={HERO_DATA.socialLinks.email}
-                                    aria-label="Send Email"
-                                    className="w-10 h-10 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 flex items-center justify-center text-dark/70 dark:text-light/70 hover:text-primary dark:hover:text-primaryDark hover:border-primary/40 transition-all duration-200"
-                                >
-                                    <EmailIcon className="w-4 h-4" />
-                                </a>
+                                <MagneticButton strength={0.4}>
+                                    <a
+                                        href={HERO_DATA.socialLinks.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="GitHub Profile"
+                                        className="w-10 h-10 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 flex items-center justify-center text-dark/70 dark:text-light/70 hover:text-dark dark:hover:text-light hover:border-dark/30 dark:hover:border-light/30 transition-all duration-200"
+                                    >
+                                        <GithubIcon className="w-4 h-4" />
+                                    </a>
+                                </MagneticButton>
+                                <MagneticButton strength={0.4}>
+                                    <a
+                                        href={HERO_DATA.socialLinks.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="LinkedIn Profile"
+                                        className="w-10 h-10 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 flex items-center justify-center text-dark/70 dark:text-light/70 hover:text-[#0077B5] hover:border-[#0077B5]/40 transition-all duration-200"
+                                    >
+                                        <LinkedInIcon className="w-4 h-4" />
+                                    </a>
+                                </MagneticButton>
+                                <MagneticButton strength={0.4}>
+                                    <a
+                                        href={HERO_DATA.socialLinks.email}
+                                        aria-label="Send Email"
+                                        className="w-10 h-10 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 flex items-center justify-center text-dark/70 dark:text-light/70 hover:text-primary dark:hover:text-primaryDark hover:border-primary/40 transition-all duration-200"
+                                    >
+                                        <EmailIcon className="w-4 h-4" />
+                                    </a>
+                                </MagneticButton>
                             </div>
                         </motion.div>
 
