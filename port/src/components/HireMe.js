@@ -30,7 +30,7 @@ const HireMe = () => {
                     font-black hover:bg-light hover:text-dark transition-all duration-300 text-[9px] sm:text-[8px]
                     dark:bg-zinc-900 dark:text-light hover:dark:bg-light hover:dark:text-dark
                     hover:scale-105 active:scale-95"
-                    aria-label="Contact for hire"
+                    aria-label="Hire Me - Contact"
                 >
                     Hire Me
                 </a>

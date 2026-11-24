@@ -63,6 +63,8 @@ const Project = ({ title, type, img, link, github, summary, youtube, postman, fi
                     className="w-full h-56 sm:h-44 object-cover"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6, ease: "circOut" }}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     width={500}
                     height={300}
                 />

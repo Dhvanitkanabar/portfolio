@@ -43,7 +43,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                             <span className="px-4 py-2 rounded-full bg-primary/10 dark:bg-primaryDark/10 text-primary dark:text-primaryDark text-xs font-black uppercase tracking-widest border border-primary/20 shadow-sm animate-pulse">
                                 🏆 {award}
                             </span>
-                            <span className="text-dark/40 dark:text-light/40 text-[10px] font-black uppercase tracking-widest">{date} • {location}</span>
+                            <span className="text-dark/70 dark:text-light/70 text-[10px] font-black uppercase tracking-widest">{date} • {location}</span>
                         </div>
 
                         <h3 className="text-5xl xl:text-4xl md:text-3xl sm:text-2xl xs:text-xl font-black text-dark dark:text-light mb-4 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors leading-[1.1]">
@@ -59,10 +59,10 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
 
                 <div className="grid grid-cols-2 gap-12 lg:grid-cols-1">
                     <div className="mb-0">
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-dark/40 dark:text-light/40 mb-4">Innovation Stack</h4>
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-dark/70 dark:text-light/70 mb-4">Innovation Stack</h4>
                         <div className="flex flex-wrap gap-2">
                             {tech.map((t) => (
-                                <span key={t} className="px-3 py-1 rounded-md bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 text-[10px] font-bold text-dark/60 dark:text-light/60">
+                                <span key={t} className="px-3 py-1 rounded-md bg-dark/5 dark:bg-light/5 border border-dark/10 dark:border-light/10 text-[10px] font-bold text-dark/80 dark:text-light/80">
                                     {t}
                                 </span>
                             ))}
@@ -70,7 +70,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-dark/40 dark:text-light/40 mb-2">Impact & Results</h4>
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-dark/70 dark:text-light/70 mb-2">Impact & Results</h4>
                         <ul className="list-disc list-inside text-sm font-semibold text-dark/80 dark:text-light/80 space-y-1">
                             {results.map((r, i) => <li key={i}>{r}</li>)}
                         </ul>
@@ -90,7 +90,7 @@ const HackathonCard = ({ title, award, date, location, description, tech, certif
                                 <a href={live} target="_blank" className="font-black text-xs uppercase tracking-widest underline underline-offset-8 decoration-2 decoration-primary/30 hover:decoration-primary transition-all">
                                     Live Demo
                                 </a>
-                                <button onClick={() => setShowProjectOptions(false)} className="text-[10px] font-bold uppercase text-dark/40 hover:text-dark dark:text-light/40 dark:hover:text-light">
+                                <button onClick={() => setShowProjectOptions(false)} className="text-[10px] font-bold uppercase text-dark/70 hover:text-dark dark:text-light/70 dark:hover:text-light">
                                     ← Back
                                 </button>
                             </div>

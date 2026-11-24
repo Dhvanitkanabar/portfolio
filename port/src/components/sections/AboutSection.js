@@ -62,8 +62,8 @@ const AboutSection = () => {
         const lines = gsap.utils.toArray(".about-illuminated-line");
         if (!lines.length) return;
 
-        // Set initial dimmed state in JS (ensures visible if JS fails)
-        gsap.set(lines, { opacity: 0.28 });
+        // Set initial dimmed state in JS (ensures visible if JS fails, passes WCAG AA contrast)
+        gsap.set(lines, { opacity: 0.48 });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -130,7 +130,7 @@ const AboutSection = () => {
                   {idx === 0 ? (
                     <>
                       Hi, I&apos;m{" "}
-                      <span className="text-primary dark:text-primaryDark font-bold">
+                      <span className="text-cyan-950 dark:text-cyan-200 font-bold">
                         Dhvanit Kanabar
                       </span>
                       ,

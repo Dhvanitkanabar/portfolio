@@ -209,7 +209,7 @@ const ContactSection = () => {
                                         {icon}
                                     </motion.span>
                                     <div>
-                                        <p className="text-xs font-bold uppercase tracking-widest text-dark/50 dark:text-light/50 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors">
+                                        <p className="text-xs font-bold uppercase tracking-widest text-dark/70 dark:text-light/70 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors">
                                             {label}
                                         </p>
                                         <p className="font-bold text-dark dark:text-light mt-0.5 sm:text-sm">{value}</p>
@@ -336,7 +336,7 @@ const ContactSection = () => {
                                 <button
                                     type="button"
                                     onClick={copyEmail}
-                                    className="text-xs font-medium text-dark/40 dark:text-light/40 hover:text-primary dark:hover:text-primaryDark transition-colors"
+                                    className="text-xs font-medium text-dark/70 dark:text-light/70 hover:text-primary dark:hover:text-primaryDark transition-colors"
                                 >
                                     {copied ? "✅ Email Copied!" : "or copy: dhvanitkanabar@gmail.com"}
                                 </button>

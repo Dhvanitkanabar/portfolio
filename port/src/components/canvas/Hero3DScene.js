@@ -87,7 +87,7 @@ function FloatingCore({ scrollRef, targetMouseRef, currentMouseRef }) {
  */
 function ParticleField({ scrollRef, currentMouseRef }) {
   const pointsRef = useRef();
-  const particleCount = 1500;
+  const particleCount = 1200; // Optimized for consistent 60+ FPS on mid-range laptops
 
   // Generate deterministic particles within comfortable frustum
   const [positions, colors] = useMemo(() => {

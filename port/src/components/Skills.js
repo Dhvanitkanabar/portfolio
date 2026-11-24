@@ -423,7 +423,7 @@ const InteractiveSkillCard = ({ skill, index, isSelectedOnMobile, onToggleSelect
                     <span className="font-bold text-sm text-dark dark:text-light truncate">
                         {skill.name}
                     </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-dark/40 dark:text-light/40">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-dark/70 dark:text-light/70">
                         {skill.category}
                     </span>
                 </div>
@@ -531,7 +531,7 @@ const Skills = () => {
                                 Core Production Stack
                             </h3>
                         </div>
-                        <span className="text-xs font-semibold text-dark/50 dark:text-light/50">
+                        <span className="text-xs font-semibold text-dark/70 dark:text-light/70">
                             Primary specialization: MERN + React Native
                         </span>
                     </div>
@@ -625,7 +625,7 @@ const Skills = () => {
                                 Currently Deepening (Active Learning)
                             </h3>
                         </div>
-                        <span className="text-[11px] font-medium text-dark/50 dark:text-light/50">
+                        <span className="text-[11px] font-medium text-dark/70 dark:text-light/70">
                             Transparent skill growth without buzzwords
                         </span>
                     </div>

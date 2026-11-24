@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import TransitionEffect from "@/components/TransitionEffect";
 import HireMe from "@/components/HireMe";
 
 import dynamic from "next/dynamic";
@@ -43,8 +42,7 @@ export default function Home() {
         <meta property="twitter:description" content="Explore the technical projects and achievements of Dhvanit Kanabar." />
         <meta property="twitter:image" content="https://dhvanitkanabar.vercel.app/og-image.png" />
       </Head>
-      <TransitionEffect />
-      <main className="w-full min-h-screen text-dark dark:text-light">
+      <div className="w-full min-h-screen text-dark dark:text-light">
         <div data-content="true">
           <HomeSection />
           <AboutSection />
@@ -61,7 +59,7 @@ export default function Home() {
           <Education />
           <ContactSection />
         </div>
-      </main>
+      </div>
       <HireMe />
     </>
   );

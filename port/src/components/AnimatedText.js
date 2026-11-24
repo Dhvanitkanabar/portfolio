@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 
 /**
- * Premium AnimatedText — word-by-word reveal with blur clear stagger.
- * Each word slides up + clears from blur in sequence.
+ * AnimatedText â€” word-by-word reveal with blur clear stagger.
+ * Configurable heading tag (`as="h2"` default) to maintain strict single-h1 accessible outline.
  */
 const wordVariants = {
     hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
@@ -19,11 +19,12 @@ const wordVariants = {
     }),
 };
 
-const AnimatedText = ({ text, className = "" }) => {
+const AnimatedText = ({ text, className = "", as = "h2" }) => {
+    const Component = as;
     const words = text.split(" ");
 
     return (
-        <h1 className={`font-bold capitalize text-8xl xs:text-5xl text-dark dark:text-light ${className}`}>
+        <Component className={`font-bold capitalize text-8xl xs:text-5xl text-dark dark:text-light ${className}`}>
             {words.map((word, i) => (
                 <motion.span
                     key={`${word}-${i}`}
@@ -37,7 +38,7 @@ const AnimatedText = ({ text, className = "" }) => {
                     {word}
                 </motion.span>
             ))}
-        </h1>
+        </Component>
     );
 };
 

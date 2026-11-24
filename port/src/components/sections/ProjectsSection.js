@@ -202,7 +202,7 @@ const ProjectsSection = () => {
                             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
                                 viewMode === "featured"
                                     ? "bg-light dark:bg-dark text-primary dark:text-primaryDark shadow-md"
-                                    : "text-dark/50 dark:text-light/50 hover:text-dark dark:hover:text-light"
+                                    : "text-dark/70 dark:text-light/70 hover:text-dark dark:hover:text-light"
                             }`}
                         >
                             <span>⚡</span>
@@ -213,7 +213,7 @@ const ProjectsSection = () => {
                             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
                                 viewMode === "grid"
                                     ? "bg-light dark:bg-dark text-primary dark:text-primaryDark shadow-md"
-                                    : "text-dark/50 dark:text-light/50 hover:text-dark dark:hover:text-light"
+                                    : "text-dark/70 dark:text-light/70 hover:text-dark dark:hover:text-light"
                             }`}
                         >
                             <span>▦</span>

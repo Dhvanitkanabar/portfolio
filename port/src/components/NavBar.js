@@ -182,7 +182,7 @@ const NavBar = () => {
                             className="absolute top-20 right-6 w-[75vw] max-w-[260px] rounded-3xl bg-light/95 dark:bg-zinc-900/95 backdrop-blur-2xl border border-dark/10 dark:border-light/10 shadow-[0_20px_50px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col p-6"
                         >
                             <nav className="flex flex-col mb-4">
-                                <span className="text-[10px] uppercase tracking-[0.2em] text-dark/40 dark:text-light/40 mb-3 font-bold">Navigation</span>
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-dark/70 dark:text-light/70 mb-3 font-bold">Navigation</span>
                                 <CustomMobileLink href="#home" title="Home" toggle={toggleMenu} isActive={activeId === "home"} />
                                 <CustomMobileLink href="#about" title="About" toggle={toggleMenu} isActive={activeId === "about"} />
                                 <CustomMobileLink href="#skills" title="Skills" toggle={toggleMenu} isActive={activeId === "skills"} />
@@ -195,7 +195,7 @@ const NavBar = () => {
                             </nav>
 
                             <div className="mt-auto pt-4 border-t border-dark/10 dark:border-light/10">
-                                <span className="text-[10px] uppercase tracking-[0.2em] text-dark/40 dark:text-light/40 mb-3 block font-bold">Social</span>
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-dark/70 dark:text-light/70 mb-3 block font-bold">Social</span>
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
                                         {socialLinks.map(({ href, Icon, label }) => (

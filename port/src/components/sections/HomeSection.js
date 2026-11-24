@@ -178,12 +178,7 @@ const HomeSection = () => {
                     <div className="col-span-7 xl:col-span-7 lg:col-span-12 flex flex-col items-start text-left">
                         
                         {/* 1. Badge: Remote Internship Status + Location */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={transitionConfig}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 mb-4 shadow-sm"
-                        >
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 mb-4 shadow-sm">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -195,7 +190,7 @@ const HomeSection = () => {
                             <span className="text-xs sm:text-[11px] font-medium text-dark/60 dark:text-light/60 hidden sm:inline">
                                 {HERO_DATA.badge.location}
                             </span>
-                        </motion.div>
+                        </div>
 
                         {/* 2. Specific, Confident Headline with Split-Text Word Mask Reveal */}
                         <h1 className="text-[clamp(2.1rem,4.2vw,3.5rem)] font-extrabold tracking-tight text-dark dark:text-light leading-[1.12] mb-3 max-w-2xl">
@@ -223,11 +218,11 @@ const HomeSection = () => {
                                                     ? "text-primary dark:text-primaryDark"
                                                     : "text-dark dark:text-light"
                                             }`}
-                                            initial={{ y: "115%", opacity: 0 }}
+                                            initial={false}
                                             animate={{ y: "0%", opacity: 1 }}
                                             transition={{
-                                                duration: 0.65,
-                                                delay: prefersReducedMotion ? 0 : 0.08 + idx * 0.04,
+                                                duration: 0.5,
+                                                delay: prefersReducedMotion ? 0 : 0.04 + idx * 0.03,
                                                 ease: [0.16, 1, 0.3, 1],
                                             }}
                                         >
@@ -239,32 +234,17 @@ const HomeSection = () => {
                         </h1>
 
                         {/* 3. Rotating Subtitle: Truthful Roles */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ...transitionConfig, delay: 0.2 }}
-                            className="text-xl xl:text-lg sm:text-base font-bold text-dark/80 dark:text-light/80 mb-3 h-7 flex items-center"
-                        >
+                        <div className="text-xl xl:text-lg sm:text-base font-bold text-dark/80 dark:text-light/80 mb-3 h-7 flex items-center">
                             <RotatingRoles roles={HERO_DATA.subtitleRoles} />
-                        </motion.div>
+                        </div>
 
                         {/* 4. Two-line concise intro (< 30 words) */}
-                        <motion.p
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ ...transitionConfig, delay: 0.25 }}
-                            className="text-base sm:text-sm font-medium text-dark/70 dark:text-light/70 leading-relaxed mb-6 max-w-xl"
-                        >
+                        <p className="text-base sm:text-sm font-medium text-dark/70 dark:text-light/70 leading-relaxed mb-6 max-w-xl">
                             {HERO_DATA.intro}
-                        </motion.p>
+                        </p>
 
                         {/* 5. Dual CTAs + Social Presence Row with Magnetic Attraction */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ ...transitionConfig, delay: 0.3 }}
-                            className="flex flex-wrap items-center gap-3.5 mb-6 w-full"
-                        >
+                        <div className="flex flex-wrap items-center gap-3.5 mb-6 w-full">
                             {/* Primary CTA: View Projects */}
                             <MagneticButton strength={0.3}>
                                 <a
@@ -325,7 +305,7 @@ const HomeSection = () => {
                                     </a>
                                 </MagneticButton>
                             </div>
-                        </motion.div>
+                        </div>
 
                         {/* 6. Proof Strip (4 Metric Stat Cards) */}
                         <motion.div
@@ -339,7 +319,7 @@ const HomeSection = () => {
                                     key={stat.label}
                                     className="p-3 rounded-xl bg-light/50 dark:bg-dark/40 border border-dark/10 dark:border-light/10 backdrop-blur-sm flex flex-col justify-between"
                                 >
-                                    <span className="text-[10px] font-bold uppercase tracking-wider text-dark/50 dark:text-light/50 line-clamp-1">
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-dark/70 dark:text-light/70 line-clamp-1">
                                         {stat.label}
                                     </span>
                                     <span className="text-lg xl:text-base font-extrabold text-dark dark:text-light tracking-tight mt-0.5">
@@ -359,7 +339,7 @@ const HomeSection = () => {
                             transition={{ ...transitionConfig, delay: 0.4 }}
                             className="flex flex-wrap items-center gap-1.5 w-full"
                         >
-                            <span className="text-[10px] font-black uppercase tracking-widest text-dark/40 dark:text-light/40 mr-1.5">
+                            <span className="text-[10px] font-black uppercase tracking-widest text-dark/70 dark:text-light/70 mr-1.5">
                                 Core Stack:
                             </span>
                             {HERO_DATA.techStack.map((tech) => (
@@ -399,9 +379,9 @@ const HomeSection = () => {
                             {/* Project Header & Acceptance Badge */}
                             <div className="flex items-start justify-between gap-3 mb-3">
                                 <div>
-                                    <h3 className="text-xl font-extrabold text-dark dark:text-light tracking-tight">
+                                    <h2 className="text-xl font-extrabold text-dark dark:text-light tracking-tight">
                                         {HERO_DATA.featuredProject.title}
-                                    </h3>
+                                    </h2>
                                     <p className="text-xs font-semibold text-primary dark:text-primaryDark">
                                         {HERO_DATA.featuredProject.category}
                                     </p>
@@ -419,7 +399,7 @@ const HomeSection = () => {
                             <div className="grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-dark/5 dark:bg-light/5 border border-dark/5 dark:border-light/5 mb-4 font-mono text-[11px]">
                                 {HERO_DATA.featuredProject.metrics.map((m) => (
                                     <div key={m.label} className="flex flex-col">
-                                        <span className="text-[9px] uppercase tracking-wider text-dark/40 dark:text-light/40">{m.label}</span>
+                                        <span className="text-[9px] uppercase tracking-wider text-dark/70 dark:text-light/70">{m.label}</span>
                                         <span className="font-bold text-dark dark:text-light truncate">{m.val}</span>
                                     </div>
                                 ))}

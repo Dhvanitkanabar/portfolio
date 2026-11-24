@@ -19,21 +19,27 @@ const Preloader = ({ onComplete }) => {
     const prefersReducedMotion = window.matchMedia(
       MOTION_CONFIG.performance.reducedMotionQuery
     ).matches;
+    const isMobile =
+      typeof window !== "undefined" &&
+      (window.innerWidth <= 1024 ||
+        window.matchMedia("(max-width: 1024px)").matches ||
+        window.matchMedia("(pointer: coarse)").matches ||
+        /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent));
 
-    if (hasSeen === "true" || prefersReducedMotion) {
+    if (hasSeen === "true" || prefersReducedMotion || isMobile) {
       if (onComplete) onComplete();
       return;
     }
 
-    // First time in session: activate preloader
+    // First time in session (desktop): activate preloader
     setShouldShow(true);
 
     // Prevent body scroll during preloader
     document.body.style.overflow = "hidden";
 
-    // Progress counter animation from 0 to 100 in ~1100ms
+    // Progress counter animation from 0 to 100 in ~200ms (fast, strictly non-blocking)
     const startTime = performance.now();
-    const duration = 1100;
+    const duration = 200;
 
     const updateProgress = (currentTime) => {
       const elapsed = currentTime - startTime;
@@ -52,8 +58,8 @@ const Preloader = ({ onComplete }) => {
           setTimeout(() => {
             setShouldShow(false);
             if (onComplete) onComplete();
-          }, 600); // Wait for exit slide
-        }, 180);
+          }, 180); // Ultra-snappy exit curtain slide
+        }, 50);
       }
     };
 

@@ -182,13 +182,21 @@ body {
     width: max-content;
     animation: marquee 36s linear infinite;
   }
-  .animate-marquee:hover {
+  .animate-marquee:hover,
+  .animate-marquee:focus-within {
     animation-play-state: paused;
   }
   @media (prefers-reduced-motion: reduce) {
     .animate-marquee {
       animation: none !important;
     }
+  }
+
+  /* Universal Focus-Visible Ring */
+  :focus-visible {
+    outline: 2px solid #06b6d4 !important;
+    outline-offset: 3px !important;
+    border-radius: 8px;
   }
 }
 

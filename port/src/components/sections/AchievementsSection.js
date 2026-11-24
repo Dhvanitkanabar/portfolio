@@ -14,7 +14,7 @@ const AchievementCard = ({ title, award, date, source, description }) => {
         >
             <div className="flex justify-between items-start mb-4">
                 <span className="text-primary dark:text-primaryDark text-xs font-black uppercase tracking-widest">{source}</span>
-                <span className="text-dark/40 dark:text-light/40 text-[10px] font-black">{date}</span>
+                <span className="text-dark/70 dark:text-light/70 text-[10px] font-black">{date}</span>
             </div>
             <h3 className="text-2xl font-black text-dark dark:text-light mb-2">{title}</h3>
             <p className="text-sm font-bold text-primary dark:text-primaryDark mb-4 italic">{award}</p>

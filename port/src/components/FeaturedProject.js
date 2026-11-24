@@ -68,7 +68,8 @@ const FeaturedProject = ({ type, title, summary, img, link, github, youtube, pos
                         className="w-full h-auto object-cover"
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.8, ease: "circOut" }}
-                        priority
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                         width={1000}
                         height={600}
                     />

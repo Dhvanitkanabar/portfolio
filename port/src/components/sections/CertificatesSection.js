@@ -62,19 +62,9 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
                             height={120}
                         />
                     ) : (
-                        <div className="w-full h-full rounded-[calc(1rem-4px)] overflow-hidden bg-white relative">
-                            <iframe
-                                src={`/certificates/${encodeURIComponent(file)}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                                title={title}
-                                style={{
-                                    width: "560px",
-                                    height: "560px",
-                                    transform: "scale(0.19)",
-                                    transformOrigin: "top left",
-                                    border: "none",
-                                    pointerEvents: "none",
-                                }}
-                            />
+                        <div className="w-full h-full rounded-[calc(1rem-4px)] overflow-hidden bg-black/10 dark:bg-white/10 backdrop-blur-sm flex flex-col items-center justify-center p-2 text-center select-none">
+                            <span className="text-3xl sm:text-2xl mb-1" aria-hidden="true">{icon}</span>
+                            <span className="text-[9px] font-black uppercase tracking-wider text-dark/70 dark:text-light/70">PDF DOC</span>
                         </div>
                     )}
                 </div>
@@ -82,13 +72,13 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
 
                 {/* Content */}
                 <div className="flex-1 min-w-0 flex flex-col">
-                    <span className={`text-[10px] font-black uppercase tracking-[0.25em] mb-2 ${isWinner ? "text-primary dark:text-primaryDark" : "text-dark/40 dark:text-light/40"}`}>
+                    <span className={`text-[10px] font-black uppercase tracking-[0.25em] mb-2 ${isWinner ? "text-primary dark:text-primaryDark" : "text-dark/70 dark:text-light/70"}`}>
                         {category}
                     </span>
                     <h3 className={`${isWinner ? "text-2xl lg:text-xl sm:text-lg xs:text-base" : "text-xl lg:text-lg sm:text-base xs:text-sm"} font-black text-dark dark:text-light mb-2 leading-snug pr-14 sm:pr-8 xs:pr-0`}>
                         {title}
                     </h3>
-                    <p className="text-[11px] font-bold text-dark/50 dark:text-light/50 uppercase tracking-widest mb-3">
+                    <p className="text-[11px] font-bold text-dark/70 dark:text-light/70 uppercase tracking-widest mb-3">
                         Issued: <span className="text-dark dark:text-light">{date}</span>
                     </p>
                     <p className="text-sm sm:text-xs font-medium text-dark/70 dark:text-light/70 leading-relaxed mb-6">
@@ -193,7 +183,7 @@ const CertificatesSection = () => {
                     <div className="flex items-center gap-4 mb-8">
                         <h2 className="text-3xl font-bold text-dark dark:text-light">Victory Highlights</h2>
                         <div className="flex-1 h-[2px] bg-gradient-to-r from-primary to-transparent" />
-                        <span className="text-xs font-semibold text-dark/40 dark:text-light/40 hidden sm:inline">
+                        <span className="text-xs font-semibold text-dark/70 dark:text-light/70 hidden sm:inline">
                             Hover to pause
                         </span>
                     </div>
