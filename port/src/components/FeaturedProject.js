@@ -7,16 +7,59 @@ import { motion } from "framer-motion";
 const FramerImage = motion(Image);
 
 const FeaturedProject = ({ type, title, summary, img, link, github, youtube, postman, figma, frontend, backend, tech, reverse = false }) => {
+    const cardRef = React.useRef(null);
+    const [rotate, setRotate] = React.useState({ x: 0, y: 0 });
+    const [isTouch, setIsTouch] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsTouch(
+            window.matchMedia("(pointer: coarse)").matches ||
+            navigator.maxTouchPoints > 0
+        );
+    }, []);
+
+    const handleMouseMove = (e) => {
+        if (isTouch || !cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Max 6 degrees tilt
+        const rotX = Math.max(-6, Math.min(6, ((rect.height / 2 - y) / (rect.height / 2)) * 6));
+        const rotY = Math.max(-6, Math.min(6, ((x - rect.width / 2) / (rect.width / 2)) * 6));
+        setRotate({ x: rotX, y: rotY });
+    };
+
+    const handleMouseLeave = () => {
+        if (isTouch) return;
+        setRotate({ x: 0, y: 0 });
+    };
+
     return (
-        <article className="w-full relative rounded-[2.5rem] border border-dark/10 bg-light/60 backdrop-blur-md dark:bg-dark/60 dark:border-light/10 p-12 lg:p-8 sm:p-6 xs:p-4 overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] group text-left">
+        <article
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                perspective: 1200,
+                transform: isTouch ? "none" : `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+                transformStyle: "preserve-3d",
+                transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
+            }}
+            className="w-full relative rounded-[2.5rem] border border-dark/10 bg-light/60 backdrop-blur-md dark:bg-dark/60 dark:border-light/10 p-12 lg:p-8 sm:p-6 xs:p-4 overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.2)] group text-left"
+        >
             {/* Animated backgrounds */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full -mr-40 -mt-40 blur-[100px] group-hover:bg-primary/10 transition-colors duration-700" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full -mr-40 -mt-40 blur-[100px] group-hover:bg-primary/10 transition-colors duration-700 pointer-events-none" />
 
             <div className={`flex items-center justify-between gap-12 lg:flex-col lg:gap-8 sm:gap-6 relative z-10 ${reverse ? "flex-row-reverse" : "flex-row"}`}>
-                {/* Image Section */}
+                {/* Image Section with 3D Depth Parallax */}
                 <Link
                     href={link || github}
                     target="_blank"
+                    style={{
+                        transform: isTouch ? "none" : "translateZ(30px)",
+                        transformStyle: "preserve-3d",
+                    }}
                     className="w-[52%] lg:w-full cursor-pointer overflow-hidden rounded-3xl border border-dark/5 dark:border-light/5 shadow-2xl group-hover:border-primary/30 transition-all duration-500 bg-dark/5 dark:bg-light/5 flex-shrink-0"
                 >
                     <FramerImage
@@ -31,8 +74,14 @@ const FeaturedProject = ({ type, title, summary, img, link, github, youtube, pos
                     />
                 </Link>
 
-                {/* Content Section */}
-                <div className="w-[44%] lg:w-full flex flex-col items-start justify-center">
+                {/* Content Section with Subtle Elevation */}
+                <div
+                    style={{
+                        transform: isTouch ? "none" : "translateZ(15px)",
+                        transformStyle: "preserve-3d",
+                    }}
+                    className="w-[44%] lg:w-full flex flex-col items-start justify-center"
+                >
                     <span className="text-primary dark:text-primaryDark font-black text-xs uppercase tracking-[0.4em] mb-4">
                         {type}
                     </span>

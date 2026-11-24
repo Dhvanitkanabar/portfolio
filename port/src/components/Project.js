@@ -7,11 +7,54 @@ import { motion } from "framer-motion";
 const FramerImage = motion(Image);
 
 const Project = ({ title, type, img, link, github, summary, youtube, postman, figma, frontend, backend, tech }) => {
+    const cardRef = React.useRef(null);
+    const [rotate, setRotate] = React.useState({ x: 0, y: 0 });
+    const [isTouch, setIsTouch] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsTouch(
+            window.matchMedia("(pointer: coarse)").matches ||
+            navigator.maxTouchPoints > 0
+        );
+    }, []);
+
+    const handleMouseMove = (e) => {
+        if (isTouch || !cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Max 7 degrees tilt
+        const rotX = Math.max(-7, Math.min(7, ((rect.height / 2 - y) / (rect.height / 2)) * 7));
+        const rotY = Math.max(-7, Math.min(7, ((x - rect.width / 2) / (rect.width / 2)) * 7));
+        setRotate({ x: rotX, y: rotY });
+    };
+
+    const handleMouseLeave = () => {
+        if (isTouch) return;
+        setRotate({ x: 0, y: 0 });
+    };
+
     return (
-        <article className="w-full h-full flex flex-col items-start justify-center rounded-[2rem] border border-dark/10 bg-light/40 backdrop-blur-sm p-8 sm:p-6 xs:p-4 relative dark:bg-dark/40 dark:border-light/10 overflow-hidden transition-all duration-500 hover:shadow-2xl group text-left">
+        <article
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                perspective: 1000,
+                transform: isTouch ? "none" : `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+                transformStyle: "preserve-3d",
+                transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
+            }}
+            className="w-full h-full flex flex-col items-start justify-center rounded-[2rem] border border-dark/10 bg-light/40 backdrop-blur-sm p-8 sm:p-6 xs:p-4 relative dark:bg-dark/40 dark:border-light/10 overflow-hidden transition-all duration-500 hover:shadow-2xl group text-left"
+        >
             <Link
                 href={link || github}
                 target="_blank"
+                style={{
+                    transform: isTouch ? "none" : "translateZ(25px)",
+                    transformStyle: "preserve-3d",
+                }}
                 className="w-full cursor-pointer overflow-hidden rounded-2xl bg-dark/5 dark:bg-light/5 border border-dark/5 dark:border-light/5 shadow-lg"
             >
                 <FramerImage

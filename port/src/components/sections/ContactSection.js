@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import AnimatedText from "@/components/AnimatedText";
 import emailjs from "@emailjs/browser";
+import MagneticButton from "@/components/MagneticButton";
 
 // ─── Social icon paths ────────────────────────────────────────────────────────
 const LinkedInIcon = () => (
@@ -135,18 +136,26 @@ const ContactSection = () => {
             />
 
             <Layout>
-                {/* Heading */}
-                <motion.div
-                    className="text-center mb-20"
-                    initial={{ opacity: 0, y: -30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                >
-                    <AnimatedText
-                        text="Let's Build Together"
-                        className="!text-7xl xl:!text-6xl lg:!text-5xl md:!text-4xl sm:!text-3xl xs:!text-2xl"
-                    />
+                {/* Kinetic Heading Reveal */}
+                <div className="text-center mb-20">
+                    <h2 className="text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl xs:text-2xl font-black tracking-tight text-dark dark:text-light mb-4">
+                        <span className="sr-only">Let&apos;s Build Together</span>
+                        <span aria-hidden="true" className="inline-block">
+                            {["Let's", "Build", "Together"].map((word, i) => (
+                                <span key={i} className="inline-block overflow-hidden mr-[0.3em]">
+                                    <motion.span
+                                        className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-dark via-primary to-primaryDark dark:from-light dark:via-primaryDark dark:to-primary"
+                                        initial={{ y: "110%", opacity: 0 }}
+                                        whileInView={{ y: 0, opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                                    >
+                                        {word}
+                                    </motion.span>
+                                </span>
+                            ))}
+                        </span>
+                    </h2>
                     <motion.p
                         className="mt-6 text-xl sm:text-lg xs:text-base font-medium text-dark/70 dark:text-light/70 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0"
                         initial={{ opacity: 0, y: 20 }}
@@ -157,11 +166,11 @@ const ContactSection = () => {
                         Have a project in mind? Let&apos;s turn your vision into reality.
                         I&apos;m always open to new opportunities and creative collaborations.
                     </motion.p>
-                </motion.div>
+                </div>
 
                 {/* Main grid */}
                 <div className="grid grid-cols-2 gap-12 lg:grid-cols-1 sm:gap-8">
-                    {/* Left — contact info cards */}
+                    {/* Left — contact info cards with magnetic feel */}
                     <motion.div
                         className="flex flex-col gap-6"
                         variants={stagger}
@@ -178,64 +187,66 @@ const ContactSection = () => {
                         </motion.h3>
 
                         {contactInfo.map(({ icon, label, value, href }) => (
-                            <motion.a
-                                key={label}
-                                href={href}
-                                className="flex items-center gap-5 p-5 rounded-2xl border border-dark/10 dark:border-light/10
-                  bg-light/60 dark:bg-dark/60 backdrop-blur-sm group cursor-pointer
-                  hover:border-primary/50 dark:hover:border-primaryDark/50 transition-all duration-300"
-                                variants={fadeUp3D}
-                                whileHover={{
-                                    x: 8,
-                                    boxShadow: "0 10px 30px -10px rgba(182,62,150,0.25)",
-                                    transition: { duration: 0.25 },
-                                }}
-                                style={{ transformStyle: "preserve-3d" }}
-                            >
-                                <motion.span
-                                    className="text-3xl"
-                                    whileHover={{ scale: 1.2, rotate: 10 }}
-                                    transition={{ duration: 0.2 }}
+                            <MagneticButton key={label} strength={0.2} className="w-full">
+                                <motion.a
+                                    href={href}
+                                    className="flex items-center gap-5 p-5 rounded-2xl border border-dark/10 dark:border-light/10
+                      bg-light/60 dark:bg-dark/60 backdrop-blur-sm group cursor-pointer w-full
+                      hover:border-primary/50 dark:hover:border-primaryDark/50 transition-all duration-300"
+                                    variants={fadeUp3D}
+                                    whileHover={{
+                                        x: 8,
+                                        boxShadow: "0 10px 30px -10px rgba(182,62,150,0.25)",
+                                        transition: { duration: 0.25 },
+                                    }}
+                                    style={{ transformStyle: "preserve-3d" }}
                                 >
-                                    {icon}
-                                </motion.span>
-                                <div>
-                                    <p className="text-xs font-bold uppercase tracking-widest text-dark/50 dark:text-light/50 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors">
-                                        {label}
-                                    </p>
-                                    <p className="font-bold text-dark dark:text-light mt-0.5 sm:text-sm">{value}</p>
-                                </div>
-                                <motion.span
-                                    className="ml-auto text-dark/30 dark:text-light/30 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors"
-                                    whileHover={{ x: 4 }}
-                                >
-                                    →
-                                </motion.span>
-                            </motion.a>
-                        ))}
-
-                        {/* Social links */}
-                        <motion.div className="flex items-center gap-4 mt-2" variants={fadeUp3D}>
-                            {socialLinks.map(({ icon, label, href, color }) => (
-                                <motion.div
-                                    key={label}
-                                    whileHover={{ scale: 1.15, y: -4 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    transition={{ duration: 0.2 }}
-                                >
-                                    <Link
-                                        href={href}
-                                        target="_blank"
-                                        className="flex items-center justify-center w-12 h-12 rounded-xl border border-dark/10 dark:border-light/10
-                      bg-light dark:bg-dark hover:border-[color] transition-all duration-300 text-dark dark:text-light"
-                                        style={{ "--hover-color": color }}
-                                        aria-label={label}
-                                        onMouseEnter={e => e.currentTarget.style.borderColor = color}
-                                        onMouseLeave={e => e.currentTarget.style.borderColor = ""}
+                                    <motion.span
+                                        className="text-3xl"
+                                        whileHover={{ scale: 1.2, rotate: 10 }}
+                                        transition={{ duration: 0.2 }}
                                     >
                                         {icon}
-                                    </Link>
-                                </motion.div>
+                                    </motion.span>
+                                    <div>
+                                        <p className="text-xs font-bold uppercase tracking-widest text-dark/50 dark:text-light/50 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors">
+                                            {label}
+                                        </p>
+                                        <p className="font-bold text-dark dark:text-light mt-0.5 sm:text-sm">{value}</p>
+                                    </div>
+                                    <motion.span
+                                        className="ml-auto text-dark/30 dark:text-light/30 group-hover:text-primary dark:group-hover:text-primaryDark transition-colors"
+                                        whileHover={{ x: 4 }}
+                                    >
+                                        →
+                                    </motion.span>
+                                </motion.a>
+                            </MagneticButton>
+                        ))}
+
+                        {/* Social links with magnetic interaction */}
+                        <motion.div className="flex items-center gap-4 mt-2" variants={fadeUp3D}>
+                            {socialLinks.map(({ icon, label, href, color }) => (
+                                <MagneticButton key={label} strength={0.35}>
+                                    <motion.div
+                                        whileHover={{ scale: 1.15, y: -4 }}
+                                        whileTap={{ scale: 0.9 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <Link
+                                            href={href}
+                                            target="_blank"
+                                            className="flex items-center justify-center w-12 h-12 rounded-xl border border-dark/10 dark:border-light/10
+                          bg-light dark:bg-dark hover:border-[color] transition-all duration-300 text-dark dark:text-light"
+                                            style={{ "--hover-color": color }}
+                                            aria-label={label}
+                                            onMouseEnter={e => e.currentTarget.style.borderColor = color}
+                                            onMouseLeave={e => e.currentTarget.style.borderColor = ""}
+                                        >
+                                            {icon}
+                                        </Link>
+                                    </motion.div>
+                                </MagneticButton>
                             ))}
                         </motion.div>
                     </motion.div>

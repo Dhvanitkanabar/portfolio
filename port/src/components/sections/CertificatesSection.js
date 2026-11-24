@@ -123,21 +123,59 @@ const CertificateCard = ({ title, description, date, file, category, variant = "
 
 
 
+const winnerCertificates = [
+    {
+        title: "Quasar Winner",
+        date: "2026",
+        file: "Quasar.pdf",
+        category: "Technical Festival",
+        variant: "winner",
+        description: "Secured 1st place in the prestigious Quasar tech festival, competing against top-tier developers in complex problem-solving and coding challenges."
+    },
+    {
+        title: "Axis Hacksprint",
+        date: "2026",
+        file: "axis hacksprint.pdf",
+        category: "Hackathon",
+        variant: "winner",
+        description: "Developed a market-ready solution under 24-hour pressure, winning the grand prize for innovation and execution."
+    },
+    {
+        title: "Chaitanya CTF Runner-up",
+        date: "2026",
+        file: "Razzify-Chaitanya-CTF-DHVANIT KANABAR.pdf",
+        category: "Cybersecurity",
+        variant: "winner",
+        description: "Ranked top in an intensive Capture The Flag event, solving complex security vulnerabilities."
+    },
+    {
+        title: "Reverse Coding Winner",
+        date: "2026",
+        file: "reverse coding.pdf",
+        category: "Logic Competition",
+        variant: "winner",
+        description: "Mastered the art of deconstructing logic to solve intricate reverse engineering tasks."
+    },
+    {
+        title: "Inquizzitive Winner",
+        date: "2025",
+        file: "inquizzitive.pdf",
+        category: "Quiz Competition",
+        variant: "winner",
+        description: "Demonstrated exceptional technical knowledge and rapid response capabilities."
+    }
+];
+
 const CertificatesSection = () => {
 
     return (
-        <motion.section
+        <section
             id="certificates"
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true, margin: "-80px" }}
-            style={{ perspective: "1400px", transformOrigin: "top center" }}
             className="w-full flex flex-col items-center justify-center py-24 bg-light dark:bg-dark relative overflow-hidden"
         >
             {/* Background elements for structural feel */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -mr-48 -mt-48 blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primaryDark/5 rounded-full -ml-48 -mb-48 blur-3xl" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -mr-48 -mt-48 blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primaryDark/5 rounded-full -ml-48 -mb-48 blur-3xl pointer-events-none" />
 
             <Layout className="pt-0">
                 <div className="text-center mb-16 sm:mb-10">
@@ -150,53 +188,28 @@ const CertificatesSection = () => {
                     </p>
                 </div>
 
-                {/* Staggered Masonry-style layout for Winners */}
-                <div className="w-full mb-32">
-                    <div className="flex items-center gap-4 mb-12">
+                {/* Scroll-Reactive Marquee for Victory Highlights (Pauses on Hover, Reduced Motion Safe) */}
+                <div className="w-full mb-28">
+                    <div className="flex items-center gap-4 mb-8">
                         <h2 className="text-3xl font-bold text-dark dark:text-light">Victory Highlights</h2>
                         <div className="flex-1 h-[2px] bg-gradient-to-r from-primary to-transparent" />
+                        <span className="text-xs font-semibold text-dark/40 dark:text-light/40 hidden sm:inline">
+                            Hover to pause
+                        </span>
                     </div>
-                    <div className="grid grid-cols-2 xl:grid-cols-1 gap-8 sm:grid-cols-1 sm:gap-6">
-                        <CertificateCard
-                            title="Quasar Winner"
-                            date="2026"
-                            file="Quasar.pdf"
-                            category="Technical Festival"
-                            variant="winner"
-                            description="Secured 1st place in the prestigious Quasar tech festival, competing against top-tier developers in complex problem-solving and coding challenges."
-                        />
-                        <CertificateCard
-                            title="Axis Hacksprint"
-                            date="2026"
-                            file="axis hacksprint.pdf"
-                            category="Hackathon"
-                            variant="winner"
-                            description="Developed a market-ready solution under 24-hour pressure, winning the grand prize for innovation and execution."
-                        />
-                        <CertificateCard
-                            title="Chaitanya CTF Runner-up"
-                            date="2026"
-                            file="Razzify-Chaitanya-CTF-DHVANIT KANABAR.pdf"
-                            category="Cybersecurity"
-                            variant="winner"
-                            description="Ranked top in an intensive Capture The Flag event, solving complex security vulnerabilities."
-                        />
-                        <CertificateCard
-                            title="Reverse Coding Winner"
-                            date="2026"
-                            file="reverse coding.pdf"
-                            category="Logic Competition"
-                            variant="winner"
-                            description="Mastered the art of deconstructing logic to solve intricate reverse engineering tasks."
-                        />
-                        <CertificateCard
-                            title="Inquizzitive Winner"
-                            date="2025"
-                            file="inquizzitive.pdf"
-                            category="Quiz Competition"
-                            variant="winner"
-                            description="Demonstrated exceptional technical knowledge and rapid response capabilities."
-                        />
+
+                    <div className="w-full overflow-hidden relative py-4 group">
+                        {/* Ambient Edge Mask Gradients */}
+                        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-light dark:from-dark to-transparent z-10 pointer-events-none" />
+                        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-light dark:from-dark to-transparent z-10 pointer-events-none" />
+
+                        <div className="animate-marquee flex gap-8 w-max">
+                            {[...winnerCertificates, ...winnerCertificates].map((cert, idx) => (
+                                <div key={idx} className="w-[480px] lg:w-[420px] sm:w-[320px] flex-shrink-0 hover:scale-[1.02] transition-transform duration-300">
+                                    <CertificateCard {...cert} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
@@ -272,7 +285,7 @@ const CertificatesSection = () => {
                     </div>
                 </div>
             </Layout>
-        </motion.section>
+        </section>
     );
 };
 

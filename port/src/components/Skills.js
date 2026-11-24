@@ -343,6 +343,109 @@ export const SKILLS_CONFIG = {
     ],
 };
 
+const InteractiveSkillCard = ({ skill, index, isSelectedOnMobile, onToggleSelect }) => {
+    const cardRef = React.useRef(null);
+    const [rotate, setRotate] = React.useState({ x: 0, y: 0 });
+    const [spotlight, setSpotlight] = React.useState({ x: 0, y: 0, opacity: 0 });
+    const [isTouch, setIsTouch] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsTouch(
+            window.matchMedia("(pointer: coarse)").matches ||
+            navigator.maxTouchPoints > 0
+        );
+    }, []);
+
+    const handleMouseMove = (e) => {
+        if (isTouch || !cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Max 8 degrees tilt (clamped to [-8, 8])
+        const rotX = Math.max(-8, Math.min(8, ((rect.height / 2 - y) / (rect.height / 2)) * 8));
+        const rotY = Math.max(-8, Math.min(8, ((x - rect.width / 2) / (rect.width / 2)) * 8));
+
+        setRotate({ x: rotX, y: rotY });
+        setSpotlight({ x, y, opacity: 1 });
+    };
+
+    const handleMouseLeave = () => {
+        if (isTouch) return;
+        setRotate({ x: 0, y: 0 });
+        setSpotlight((prev) => ({ ...prev, opacity: 0 }));
+    };
+
+    const IconComponent = skill.Icon;
+
+    return (
+        <motion.div
+            ref={cardRef}
+            layout
+            initial={{ opacity: 0, y: 20, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.35, delay: index * 0.025, ease: [0.16, 1, 0.3, 1] }}
+            onClick={onToggleSelect}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                perspective: 800,
+                transform: isTouch ? "none" : `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+                transformStyle: "preserve-3d",
+                transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
+            }}
+            className="relative flex flex-col justify-between p-4 sm:p-3.5 rounded-2xl cursor-pointer group
+            border border-dark/10 dark:border-light/10 bg-light/60 dark:bg-dark/60 backdrop-blur-sm
+            hover:border-primary/50 dark:hover:border-primaryDark/50 hover:shadow-xl transition-colors duration-300 overflow-hidden"
+        >
+            {/* Soft cursor-tracking spotlight */}
+            {!isTouch && (
+                <div
+                    className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300 -z-10"
+                    style={{
+                        opacity: spotlight.opacity,
+                        background: `radial-gradient(220px circle at ${spotlight.x}px ${spotlight.y}px, rgba(6, 182, 212, 0.16), transparent 75%)`,
+                    }}
+                    aria-hidden="true"
+                />
+            )}
+
+            {/* Skill Header */}
+            <div className="flex items-center gap-3 mb-2.5">
+                <div
+                    className="w-9 h-9 p-2 rounded-xl flex-shrink-0 flex items-center justify-center transition-transform group-hover:scale-110"
+                    style={{ backgroundColor: `${skill.color}18` }}
+                >
+                    <IconComponent />
+                </div>
+                <div className="flex flex-col min-w-0">
+                    <span className="font-bold text-sm text-dark dark:text-light truncate">
+                        {skill.name}
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-dark/40 dark:text-light/40">
+                        {skill.category}
+                    </span>
+                </div>
+            </div>
+
+            {/* One-Line "Used In" Proven Context */}
+            <div className="w-full pt-2 border-t border-dark/5 dark:border-light/5 text-left">
+                <p className="text-xs font-medium text-dark/70 dark:text-light/70 leading-snug">
+                    <span className="text-primary dark:text-primaryDark font-bold">Proof: </span>
+                    {skill.usedIn}
+                </p>
+            </div>
+
+            {/* Bottom Accent line */}
+            <div
+                className="absolute bottom-0 left-4 right-4 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
+                style={{ backgroundColor: skill.color }}
+            />
+        </motion.div>
+    );
+};
+
 const Skills = () => {
     const [activeTab, setActiveTab] = useState("All");
     const [selectedSkillId, setSelectedSkillId] = useState(null);
@@ -487,63 +590,23 @@ const Skills = () => {
                     </div>
                 </div>
 
-                {/* 4. SKILLS GRID WITH REVEALABLE "USED IN" CONTEXT */}
+                {/* 4. SKILLS GRID WITH REVEALABLE "USED IN" CONTEXT & 3D PERSPECTIVE TILT */}
                 <motion.div
                     layout
                     className="grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mb-16"
                 >
                     <AnimatePresence mode="popLayout">
-                        {filteredSkills.map((skill, index) => {
-                            const IconComponent = skill.Icon;
-                            const isSelectedOnMobile = selectedSkillId === skill.id;
-
-                            return (
-                                <motion.div
-                                    key={skill.id}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.25, delay: index * 0.02 }}
-                                    onClick={() => setSelectedSkillId(isSelectedOnMobile ? null : skill.id)}
-                                    className="relative flex flex-col justify-between p-4 sm:p-3.5 rounded-2xl cursor-pointer group
-                                    border border-dark/10 dark:border-light/10 bg-light/40 dark:bg-dark/40 backdrop-blur-sm
-                                    hover:border-primary/50 dark:hover:border-primaryDark/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                                >
-                                    {/* Skill Header */}
-                                    <div className="flex items-center gap-3 mb-2.5">
-                                        <div
-                                            className="w-9 h-9 p-2 rounded-xl flex-shrink-0 flex items-center justify-center transition-transform group-hover:scale-110"
-                                            style={{ backgroundColor: `${skill.color}18` }}
-                                        >
-                                            <IconComponent />
-                                        </div>
-                                        <div className="flex flex-col min-w-0">
-                                            <span className="font-bold text-sm text-dark dark:text-light truncate">
-                                                {skill.name}
-                                            </span>
-                                            <span className="text-[10px] font-bold uppercase tracking-wider text-dark/40 dark:text-light/40">
-                                                {skill.category}
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    {/* One-Line "Used In" Proven Context */}
-                                    <div className="w-full pt-2 border-t border-dark/5 dark:border-light/5 text-left">
-                                        <p className="text-xs font-medium text-dark/70 dark:text-light/70 leading-snug">
-                                            <span className="text-primary dark:text-primaryDark font-bold">Proof: </span>
-                                            {skill.usedIn}
-                                        </p>
-                                    </div>
-
-                                    {/* Bottom Accent line */}
-                                    <div
-                                        className="absolute bottom-0 left-4 right-4 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"
-                                        style={{ backgroundColor: skill.color }}
-                                    />
-                                </motion.div>
-                            );
-                        })}
+                        {filteredSkills.map((skill, index) => (
+                            <InteractiveSkillCard
+                                key={skill.id}
+                                skill={skill}
+                                index={index}
+                                isSelectedOnMobile={selectedSkillId === skill.id}
+                                onToggleSelect={() =>
+                                    setSelectedSkillId(selectedSkillId === skill.id ? null : skill.id)
+                                }
+                            />
+                        ))}
                     </AnimatePresence>
                 </motion.div>
 

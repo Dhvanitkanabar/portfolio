@@ -1,9 +1,16 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import FeaturedProject from "@/components/FeaturedProject";
 import Project from "@/components/Project";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { MOTION_CONFIG } from "@/config/motion.config";
+
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // Assets
 import secureCommImg from "../../../public/images/projects/secure_ui.png";
@@ -102,19 +109,52 @@ const categories = ["All", "Full Stack", "Frontend"];
 const ProjectsSection = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [viewMode, setViewMode] = useState("featured"); // "featured" | "grid"
+    const sectionRef = useRef(null);
 
     const filteredProjects = useMemo(() => {
         if (activeCategory === "All") return projectsData;
         return projectsData.filter(project => project.category === activeCategory);
     }, [activeCategory]);
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const mm = gsap.matchMedia();
+            mm.add("(min-width: 1024px)", () => {
+                const prefersReducedMotion = window.matchMedia(
+                    MOTION_CONFIG.performance.reducedMotionQuery
+                ).matches;
+                if (prefersReducedMotion) return;
+
+                const cards = gsap.utils.toArray(".project-card-container");
+                cards.forEach((card) => {
+                    gsap.fromTo(
+                        card,
+                        { scale: 0.95, opacity: 0.7 },
+                        {
+                            scale: 1,
+                            opacity: 1,
+                            ease: "power2.out",
+                            scrollTrigger: {
+                                trigger: card,
+                                start: "top 85%",
+                                end: "top 50%",
+                                scrub: 0.4,
+                            },
+                        }
+                    );
+                });
+            });
+
+            ScrollTrigger.refresh();
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, [filteredProjects, viewMode]);
+
     return (
-        <motion.section
-            initial={{ opacity: 0, rotateX: -12, y: 100, scale: 0.95 }}
-            whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true, margin: "-80px" }}
-            style={{ perspective: "1400px", transformOrigin: "top center" }}
+        <section
+            ref={sectionRef}
+            id="projects"
             className="w-full flex flex-col items-center justify-center py-24 relative overflow-hidden"
         >
             {/* Ambient background */}
@@ -197,7 +237,9 @@ const ProjectsSection = () => {
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.95 }}
                                     transition={{ duration: 0.4 }}
-                                    className={isFeaturedLayout ? "col-span-12" : "col-span-6 md:col-span-12"}
+                                    className={`project-card-container ${
+                                        isFeaturedLayout ? "col-span-12" : "col-span-6 md:col-span-12"
+                                    }`}
                                 >
                                     {isFeaturedLayout ? (
                                         <FeaturedProject
@@ -213,7 +255,7 @@ const ProjectsSection = () => {
                     </AnimatePresence>
                 </motion.div>
             </Layout>
-        </motion.section>
+        </section>
     );
 };
 
